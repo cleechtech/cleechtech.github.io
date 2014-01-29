@@ -1,0 +1,32 @@
+body { 
+background: url(../img/IMG_0885.JPG) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+height: 100%;
+}
+
+.container {
+	background-color:rgba(0,0,0,0.1);
+	height: 100%;
+	margin-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0;
+	margin-right: 0;
+	margin-left: 0;
+	width:100%;
+}
+#top {
+	height: 40px;
+	background-color:rgba(0,0,0,0);
+}
+
+#stripe {
+	padding: 20px;
+	background-color: #CC0000;
+}
+
+#name {
+	color: #ffffff;
+}

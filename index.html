@@ -5,26 +5,54 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
 	
-	<link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css'>
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link rel='stylesheet' href='css/bootstrap.min.css'>
+	<link rel='stylesheet' href='css/journal.bootstrap.css'>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div id='container' class='container text-center'>
-		<div class='row' id='top'></div>
-		<div class='row' id='stripe'>
-			<h1 id='name'>Connor James Leech</h1>
-			<a href='http://github.com/jasonshark'>
-				<i class='fa fa-github fa-4x'></i>
-			</a>
-			<a href='http://twitter.com/cleechtech'>
-				<i class='fa fa-twitter fa-4x'></i>
-			</a>
-		</div>
+	<nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Stripe</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+        </ul>
+    </nav>
+
+	<div class='row' id='top'></div>
+
+	<div class='row text-center' id='stripe' data-slide="1" data-stellar-background-ratio="0.5">
+		<h1>Connor James Leech</h1>
+		<a href='http://github.com/jasonshark'>
+			<i class='fa fa-github fa-4x'></i>
+		</a>
+		<a href='http://twitter.com/cleechtech'>
+			<i class='fa fa-twitter fa-4x'></i>
+		</a>
+
+		<a class="button" data-slide="2" title=""></a>
+	</div>
+		
+	<!-- angular-d3 image background -->
+	<div class='row text-center' id='two' data-slide="2" data-stellar-background-ratio="0.3">
+	</div>
+
+	<div class='row text-center' id='three' data-slide="3" data-stellar-background-ratio="0.8">
+		<h1>Three</h2>
+		<p>Something else</p>
+		<a class="button" data-slide="4" title=""></a>
+	</div>
+
+	<!-- xkcd comic -->
+	<div class='row text-center' id='four' data-slide="4" data-stellar-background-ratio="0.1">
 	</div>
 	
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<script src="js/lib/jquery-1.10.2.js"></script>
+<script src="js/lib/stellar.jquery.js"></script>
+<script src="js/lib/easing.jquery.js"></script>
+<script src="js/lib/waypoints.jquery.js"></script>
+<script src='js/lib/bootstrap.min.js'></script>
 <script src='js/script.js'></script>
 </body>
 </html>

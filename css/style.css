@@ -1,32 +1,45 @@
 body { 
-background: url(../img/IMG_0885.JPG) no-repeat center center fixed; 
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-height: 100%;
+	background: url(../img/IMG_0885.JPG) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
-.container {
-	background-color:rgba(0,0,0,0.1);
-	height: 100%;
-	margin-bottom: 0px;
-	padding-right: 0px;
-	padding-left: 0;
-	margin-right: 0;
-	margin-left: 0;
-	width:100%;
+h1 {
+	color: #ffffff;
 }
+
+.row {
+	margin: 0;
+}
+
 #top {
-	height: 40px;
+	height: 450px;
 	background-color:rgba(0,0,0,0);
 }
 
 #stripe {
 	padding: 20px;
-	background-color: #CC0000;
+	height: 200px;
+	background-color: #729DC1;
 }
 
-#name {
-	color: #ffffff;
+#two {
+	height:500px;
+	background: url(../img/angular-d3-example.png) no-repeat; 
+	background-size: cover;
+	background-attachment: fixed; /* removes jitters */
+}
+
+#three {
+	height:500px;
+	background-color:#43dc7d;
+}
+
+#four {
+	height:600px;
+	background: url(../img/xkcd-fantasy.png) no-repeat; 
+	background-size: cover;
+	background-attachment: fixed; /* removes jitters */
 }

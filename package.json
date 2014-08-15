@@ -1,0 +1,28 @@
+{
+  "name": "jasonshark.github.io",
+  "version": "0.0.0",
+  "description": "github page personal website",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonshark/jasonshark.github.io.git"
+  },
+  "author": "Connor Leech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonshark/jasonshark.github.io/issues"
+  },
+  "homepage": "https://github.com/jasonshark/jasonshark.github.io",
+  "devDependencies": {
+    "browserify": "^5.10.0",
+    "gulp": "^3.8.7",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "lodash": "^2.4.1"
+  }
+}

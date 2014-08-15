@@ -1,0 +1,196 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'browserify-shim',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'browserify-shim', null ]
+6 verbose cache add name=undefined spec="browserify-shim" args=["browserify-shim",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'browserify-shim',
+7 verbose parsed url   path: 'browserify-shim',
+7 verbose parsed url   href: 'browserify-shim' }
+8 silly lockFile 91b720d4-browserify-shim browserify-shim
+9 verbose lock browserify-shim /Users/connorleech/.npm/91b720d4-browserify-shim.lock
+10 silly lockFile 91b720d4-browserify-shim browserify-shim
+11 silly lockFile 91b720d4-browserify-shim browserify-shim
+12 verbose addNamed [ 'browserify-shim', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 8e47135d-browserify-shim browserify-shim@
+15 verbose lock browserify-shim@ /Users/connorleech/.npm/8e47135d-browserify-shim.lock
+16 silly addNameRange { name: 'browserify-shim', range: '*', hasData: false }
+17 verbose url raw browserify-shim
+18 verbose url resolving [ 'https://registry.npmjs.org/', './browserify-shim' ]
+19 verbose url resolved https://registry.npmjs.org/browserify-shim
+20 info trying registry request attempt 1 at 15:44:02
+21 verbose etag "7IJSH6BYGDZP5CPY8UZROQDZ0"
+22 http GET https://registry.npmjs.org/browserify-shim
+23 http 304 https://registry.npmjs.org/browserify-shim
+24 silly registry.get cb [ 304,
+24 silly registry.get   { date: 'Fri, 15 Aug 2014 22:44:02 GMT',
+24 silly registry.get     server: 'Apache',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     'last-modified': 'Fri, 15 Aug 2014 22:44:02 GMT',
+24 silly registry.get     'cache-control': 'max-age=60',
+24 silly registry.get     etag: '"7IJSH6BYGDZP5CPY8UZROQDZ0"',
+24 silly registry.get     'x-served-by': 'cache-lax1423-LAX',
+24 silly registry.get     'x-cache': 'HIT',
+24 silly registry.get     'x-cache-hits': '1',
+24 silly registry.get     'x-timer': 'S1408142642.536197,VS0,VE161',
+24 silly registry.get     vary: 'Accept',
+24 silly registry.get     'content-length': '0',
+24 silly registry.get     'keep-alive': 'timeout=10, max=50',
+24 silly registry.get     connection: 'Keep-Alive' } ]
+25 verbose etag browserify-shim from cache
+26 silly addNameRange number 2 { name: 'browserify-shim', range: '*', hasData: true }
+27 silly addNameRange versions [ 'browserify-shim',
+27 silly addNameRange   [ '0.1.0',
+27 silly addNameRange     '0.2.0',
+27 silly addNameRange     '0.3.0',
+27 silly addNameRange     '0.4.0',
+27 silly addNameRange     '0.4.1',
+27 silly addNameRange     '0.4.2',
+27 silly addNameRange     '0.4.3',
+27 silly addNameRange     '0.4.4',
+27 silly addNameRange     '0.4.5',
+27 silly addNameRange     '0.5.0',
+27 silly addNameRange     '0.5.1',
+27 silly addNameRange     '0.5.2',
+27 silly addNameRange     '0.5.3',
+27 silly addNameRange     '0.5.4',
+27 silly addNameRange     '0.6.0',
+27 silly addNameRange     '1.0.0',
+27 silly addNameRange     '2.0.1',
+27 silly addNameRange     '2.0.2',
+27 silly addNameRange     '1.0.1',
+27 silly addNameRange     '2.0.3',
+27 silly addNameRange     '2.0.4',
+27 silly addNameRange     '2.0.5',
+27 silly addNameRange     '2.0.6',
+27 silly addNameRange     '2.0.7',
+27 silly addNameRange     '2.0.8',
+27 silly addNameRange     '2.0.9',
+27 silly addNameRange     '3.0.0',
+27 silly addNameRange     '3.0.1',
+27 silly addNameRange     '3.0.2',
+27 silly addNameRange     '3.0.3',
+27 silly addNameRange     '3.0.4',
+27 silly addNameRange     '3.0.5',
+27 silly addNameRange     '2.0.10',
+27 silly addNameRange     '3.0.6',
+27 silly addNameRange     '3.1.0',
+27 silly addNameRange     '3.1.1',
+27 silly addNameRange     '3.1.2',
+27 silly addNameRange     '3.1.3',
+27 silly addNameRange     '3.1.4',
+27 silly addNameRange     '3.1.5',
+27 silly addNameRange     '3.2.0',
+27 silly addNameRange     '3.2.1',
+27 silly addNameRange     '3.2.2',
+27 silly addNameRange     '3.3.0',
+27 silly addNameRange     '3.3.1',
+27 silly addNameRange     '3.3.2',
+27 silly addNameRange     '3.4.0',
+27 silly addNameRange     '3.4.1',
+27 silly addNameRange     '3.5.0',
+27 silly addNameRange     '3.6.0' ] ]
+28 verbose addNamed [ 'browserify-shim', '3.6.0' ]
+29 verbose addNamed [ '3.6.0', '3.6.0' ]
+30 silly lockFile 02c9ed3d-browserify-shim-3-6-0 browserify-shim@3.6.0
+31 verbose lock browserify-shim@3.6.0 /Users/connorleech/.npm/02c9ed3d-browserify-shim-3-6-0.lock
+32 silly lockFile 02c9ed3d-browserify-shim-3-6-0 browserify-shim@3.6.0
+33 silly lockFile 02c9ed3d-browserify-shim-3-6-0 browserify-shim@3.6.0
+34 silly lockFile 8e47135d-browserify-shim browserify-shim@
+35 silly lockFile 8e47135d-browserify-shim browserify-shim@
+36 silly resolved [ { name: 'browserify-shim',
+36 silly resolved     version: '3.6.0',
+36 silly resolved     description: 'Makes CommonJS-incompatible modules browserifyable.',
+36 silly resolved     main: 'index.js',
+36 silly resolved     scripts:
+36 silly resolved      { test: 'tap test/*.js && tap test/shim/*.js',
+36 silly resolved        'shim-jquery': 'npm install opener && cd ./examples/shim-jquery && npm install && node build.js && opener index.html',
+36 silly resolved        'shim-jquery-diag': 'npm install opener && cd ./examples/shim-jquery && npm install && node build-diag.js && opener index.html',
+36 silly resolved        'expose-jquery': 'npm install opener && cd ./examples/expose-jquery && npm install && node build.js && opener index.html',
+36 silly resolved        'expose-jquery-diag': 'npm install opener && cd ./examples/expose-jquery && npm install && node build-diag.js && opener index.html' },
+36 silly resolved     repository:
+36 silly resolved      { type: 'git',
+36 silly resolved        url: 'git://github.com/thlorenz/browserify-shim.git' },
+36 silly resolved     keywords:
+36 silly resolved      [ 'browserify',
+36 silly resolved        'browserify-transform',
+36 silly resolved        'shim',
+36 silly resolved        'global',
+36 silly resolved        'globals',
+36 silly resolved        'transform',
+36 silly resolved        'window',
+36 silly resolved        'commonjs' ],
+36 silly resolved     author:
+36 silly resolved      { name: 'Thorsten Lorenz',
+36 silly resolved        email: 'thlorenz@gmx.de',
+36 silly resolved        url: 'thlorenz.com' },
+36 silly resolved     license: 'MIT',
+36 silly resolved     devDependencies:
+36 silly resolved      { browserify: '~4.1.2',
+36 silly resolved        jsdom: '~0.7.0',
+36 silly resolved        ncp: '~0.5.0',
+36 silly resolved        proxyquire: '~0.5.1',
+36 silly resolved        request: '~2.12.0',
+36 silly resolved        rimraf: '~2.2.6',
+36 silly resolved        tap: '~0.3.3' },
+36 silly resolved     dependencies:
+36 silly resolved      { exposify: '~0.2.0',
+36 silly resolved        mothership: '~0.2.0',
+36 silly resolved        'rename-function-calls': '~0.1.0',
+36 silly resolved        resolve: '~0.6.1',
+36 silly resolved        through: '~2.3.4' },
+36 silly resolved     peerDependencies: { browserify: '>= 2.3.0 < 5' },
+36 silly resolved     bugs: { url: 'https://github.com/thlorenz/browserify-shim/issues' },
+36 silly resolved     homepage: 'https://github.com/thlorenz/browserify-shim',
+36 silly resolved     _id: 'browserify-shim@3.6.0',
+36 silly resolved     dist:
+36 silly resolved      { shasum: '8c93b93250a642137cf602e4304b6a813b7105ff',
+36 silly resolved        tarball: 'http://registry.npmjs.org/browserify-shim/-/browserify-shim-3.6.0.tgz' },
+36 silly resolved     _from: 'browserify-shim@',
+36 silly resolved     _npmVersion: '1.4.6',
+36 silly resolved     _npmUser: { name: 'thlorenz', email: 'thlorenz@gmx.de' },
+36 silly resolved     maintainers: [ [Object] ],
+36 silly resolved     directories: {},
+36 silly resolved     _shasum: '8c93b93250a642137cf602e4304b6a813b7105ff',
+36 silly resolved     _resolved: 'https://registry.npmjs.org/browserify-shim/-/browserify-shim-3.6.0.tgz',
+36 silly resolved     readme: 'ERROR: No README data found!' } ]
+37 info install browserify-shim@3.6.0 into /Users/connorleech/Projects/jasonshark.github.io
+38 info installOne browserify-shim@3.6.0
+39 info /Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim unbuild
+40 info /Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim unbuild
+41 error error rolling back Error: EACCES, unlink '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen'
+41 error error rolling back  browserify-shim@3.6.0 { [Error: EACCES, unlink '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen']
+41 error error rolling back   errno: 3,
+41 error error rolling back   code: 'EACCES',
+41 error error rolling back   path: '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen' }
+42 error Error: EACCES, unlink '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen'
+42 error  { [Error: EACCES, unlink '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen']
+42 error   errno: 3,
+42 error   code: 'EACCES',
+42 error   path: '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen' }
+43 error Please try running this command again as root/Administrator.
+44 error System Darwin 13.1.0
+45 error command "node" "/usr/local/bin/npm" "install" "browserify-shim" "--save-dev"
+46 error cwd /Users/connorleech/Projects/jasonshark.github.io
+47 error node -v v0.10.29
+48 error npm -v 1.4.14
+49 error path /Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen
+50 error code EACCES
+51 error errno 3
+52 error stack Error: EACCES, unlink '/Users/connorleech/Projects/jasonshark.github.io/node_modules/browserify-shim/node_modules/exposify/node_modules/detective/node_modules/.bin/escodegen'
+53 verbose exit [ 3, true ]

@@ -1,0 +1,31 @@
+{
+  "name": "jasonshark.github.io",
+  "version": "0.0.0",
+  "description": "jasonshark.github.io ====================",
+  "main": "angellist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonshark/jasonshark.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonshark/jasonshark.github.io/issues"
+  },
+  "homepage": "https://github.com/jasonshark/jasonshark.github.io",
+  "dependencies": {
+    "jquery": "^2.1.1",
+    "lodash": "^2.4.1",
+    "request": "^2.40.0"
+  },
+  "devDependencies": {
+    "browserify": "^5.9.3",
+    "gulp": "^3.8.7",
+    "gulp-browserify": "^0.5.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.3.4"
+  }
+}

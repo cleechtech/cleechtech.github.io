@@ -1,4 +1,4 @@
-jasonshark.github.io
+Connor Leech
 ====================
 
-my github page site
+Hi my name is Connor.

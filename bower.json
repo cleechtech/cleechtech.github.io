@@ -1,0 +1,25 @@
+{
+  "name": "jasonshark.github.io",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jasonshark/jasonshark.github.io",
+  "authors": [
+    "Connor Leech <connorleech@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.25",
+    "angular-ui-router": "~0.2.11",
+    "angular-bootstrap": "~0.11.0",
+    "angular-isotope": "~0.1.14"
+  },
+  "resolutions": {
+    "angular": "~1.0.7"
+  }
+}

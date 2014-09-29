@@ -32,6 +32,5 @@
   },
   "_source": "git://github.com/mankindsoftware/angular-isotope.git",
   "_target": "~0.1.14",
-  "_originalSource": "angular-isotope",
-  "_direct": true
+  "_originalSource": "angular-isotope"
 }

@@ -16,8 +16,7 @@
   "dependencies": {
     "angular": "~1.2.25",
     "angular-ui-router": "~0.2.11",
-    "angular-bootstrap": "~0.11.0",
-    "angular-isotope": "~0.1.14"
+    "angular-bootstrap": "~0.11.0"
   },
   "resolutions": {
     "angular": "~1.0.7"

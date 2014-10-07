@@ -1,6 +1,14 @@
 .text-center a {
   margin-right: 15px;
 }
+
+#sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+
 /*Spinner*/
 .spinner {
   width: 40px;

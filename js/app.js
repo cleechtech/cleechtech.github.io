@@ -12,6 +12,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('resume', {
 			url: '/resume',
 			templateUrl: 'views/resume.html'
+		})
+		.state('timeline', {
+			url: '/timeline',
+			templateUrl: 'views/timeline.html'
+		})
+		.state('portfolio', {
+			url: '/portfolio',
+			templateUrl: 'views/portfolio.html'
 		});
 
 	$urlRouterProvider.otherwise('/')
@@ -33,3 +41,36 @@ app.run(function($rootScope){
 		$('.blogitem-hoverinfo, .portfolioitem-hoverinfo', this).stop(true, true).fadeOut('200', 'easeInOutCubic');
 	});
 });
+
+
+app.directive('stickyTop', function($window){
+	return {
+		restrict: 'EA',
+		link: function(scope, elem, attrs){
+			angular.element($window).bind('scroll', function(){
+				elem.css({ position: 'fixed', top: '0px'})
+			})
+		}
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

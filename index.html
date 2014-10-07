@@ -9,7 +9,7 @@
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/flatly.css">
+  <link rel="stylesheet" href="css/agency.css">
 	<link rel="stylesheet" href="css/simplesidebar.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,13 +19,18 @@
   <div ng-include='"views/nav.html"'></div>
   <div id="page-content-wrapper">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" id='main-body'>
         <div class="col-lg-12">
           <div ui-view=''></div>
         </div>
       </div>
+
+      <footer id='sticky-footer'>
+        <p class='text-muted'>The source for this website is <a href='http://github.com/jasonshark/jasonshark.github.io'>available on Github</a></p>
+      </footer>
     </div>
 </div>
+
 
 <!-- 
 <div class="spinner">
@@ -43,5 +48,6 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 <script src='js/app.js'></script>
+<script src='js/portfolio.js'></script>
 </body>
 </html>

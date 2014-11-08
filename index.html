@@ -3,40 +3,26 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Connor Leech - Portfolio</title>
+	<title>Connor Leech</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/png" href="images/favicon.ico">
-	
+<!-- 	<link rel="icon" type="image/png" href="images/favicon.ico"> -->
+
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-	
-	<!-- Fonts and display -->
-	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans|Oswald|Droid+Sans|Yanone+Kaffeesatz|Droid+Serif|Ubuntu|Lobster|Francois+One|Arvo|Changa+One|Rokkitt|Nunito|Bitter|Merriweather|Raleway|Pacifico|Josefin+Sans|Questrial|Cantarell|Norican|Vollkorn|Quicksand|Limelight|Cantata+One|Bree+Serif|Oleo+Script|Playfair+Display|Quattrocento+Sans|Berkshire+Swash|Passion+One|Cuprum' rel='stylesheet' type='text/css'> -->
 
+	<link rel='stylesheet' href='css/agency.css'>
 	<link rel='stylesheet' href='css/main.css'>
-
-
 </head>
 
 <body>	
 	<div class='container'>
-		<nav class='pull-right col-md-2'>
-			<ul class="nav" id='nav'>
-				<li class='current'><a href="#about-me">About me</a></li>
-				<!-- <li><a href="#experience">Experience</a></li> -->
-				<li><a href="#education">Education</a></li>
-				<li><a href="#skills">Skills</a></li>
- 		  		<!-- <li><a href="#portfolio">Portfolio</a></li>  -->
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-		</nav>
 
 		<!-- MAIN CONTENT -->
-		<div class="col-md-10">
+		<div class="col-md-12">
 	    	<div class='tools'>
 				<a href="javascript:if(window.print)window.print()" title="Print This Page"><i class="fa fa-2x fa-print"></i></a>
 				
@@ -50,178 +36,267 @@
 	            	</div>
 	            	<div class="col-md-7">
 				    	<h1>Connor Leech</h1>
-				   		<h2>Front End Engineer in the Bay Area</h2>
+				   		<h2>Front end developer in the Yay Area</h2>
 				   	</div>
 				</div>
 				
 				<div class="well">
-					<p class="lead">I'm mad chill, likes to write code, and wants to work with the smartest, nicest people in the game. 2+ years experience. I am proficient in OO Javascript, Angular.js, Node.js, HTML5, CSS3, jQuery, D3.js, Ruby On Rails and currently learning Backbone.js and React.js.</p>
+					<p class="lead">Motivated javascript dude looking for high growth startups in SF. When I'm not doing that I like building things with open data, running, biking, yachting and kickin it in Oakland. Also likes reading.</p>
 				</div>
 				
 				<div class='row'>
-					<a target="_blank" title="Github" href="http://www.github.com/jasonshark">
-						<i class="fa fa-3x fa-github"></i>
-					</a>
-					<a target="_blank" title="Twitter" href="https://twitter.com/cleechtech">
-						<i class="fa fa-3x fa-twitter"></i>
-					</a>
-					<a target="_blank" title="LinkedIn" href="http://www.linkedin.com/in/connorleech">
-						<i class="fa fa-3x fa-linkedin"></i>
-					</a>
+					<div class='col-md-12'>
+						<a target="_blank" title="Github" href="http://www.github.com/jasonshark">
+							<i class="fa fa-3x fa-github"></i>
+						</a>
+						<a target="_blank" title="Twitter" href="https://twitter.com/cleechtech">
+							<i class="fa fa-3x fa-twitter"></i>
+						</a>
+						<a target="_blank" title="LinkedIn" href="http://www.linkedin.com/in/connorleech">
+							<i class="fa fa-3x fa-linkedin"></i>
+						</a>
+					</div>
 				</div>
 			</div>
 
-			<!-- Education -->
-			<div class="section" id="education">
-			  	<h2 class="section-title"><i class="fa fa-book"></i> Education<a href="#phone-navbar" class="top visible-phone"><span class="glyphicons white up_arrow"><i></i></span></a></h2>
-			  	
-			  	<div class="timeline">
-					  <div class="timeline-item">
-		  			 	<div class="timeline-item-date">2011 - 2013</div>
-		  			 	<div class="timeline-item-trigger"><span class="glyphicons white circle_plus" data-toggle="collapse" data-target="#education2"><i></i></span></div>
-		  			 	<div class="timeline-arrow"><i></i></div>
-		  			 	<div class="timeline-item-content">
-							<h3 class="timeline-item-title" data-toggle="collapse" data-target="#education2">Bachelor's Degree</h3>
-							<div class="collapse">
-								<p><small class="muted">from 2007 to 2011</small></p>
-								<h4 class="media-heading">University of California, Santa Barbara</h4>
-								<p>Bachelor of Arts (BA) Political Science</p>	
-							</div>
-						</div>
-					 </div>
-					 <span class="clear"></span>
-			  	</div>
-		  	</div>
-		  	<!-- /Education -->
+			<!-- Projects Grid Section -->
+		    <section id="portfolio" class="bg-light-gray">
+		        <div class="container">
+		            <div class="row">
+		                <div class="text-center">
+		                    <h2 class="section-heading">Projects</h2>
+		                    <h3 class="section-subheading text-muted">Stuff I've built</h3>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>Oakland Crime API</h4>
+		                        <p class="text-muted">map making and javascript</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>Nodeschool exercises</h4>
+		                        <p class="text-muted">Javascripts @ the command line</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>BART transit data</h4>
+		                        <p class="text-muted">Where's errybody going?</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>Nairobi Matatu maps</h4>
+		                        <p class="text-muted">Figure out where you're going</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>Trivial apps</h4>
+		                        <p class="text-muted">Navigating the javascript MV* landscape</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>D3 playground</h4>
+		                        <p class="text-muted">Messing around with data visualization</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-6 portfolio-item">
+		                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+		                        <div class="portfolio-hover">
+		                            <div class="portfolio-hover-content">
+		                                <i class="fa fa-plus fa-3x"></i>
+		                            </div>
+		                        </div>
+		                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
+		                    </a>
+		                    <div class="portfolio-caption">
+		                        <h4>My photos</h4>
+		                        <p class="text-muted">Node.js photo gallery</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <!-- /Projects -->
 
 		  	<!-- Skills -->
-		  	<div class="section skills" id="skills">
-		  		<div class='row'>
-			  		<h2 class="col-md-3 section-title"><i class="fa fa-cogs"></i> Skills</h2>
-			  		<p class='col-md-6' style='margin-top:30px; margin-left:-10px;'>Highly scientific...</p>
-		  		</div>
-			  	
-			  	<div class="row">
-			  		<h4 class="col-md-3">JavaScript</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-			  	
-			  	<div class="row">
-			  		<h4 class="col-md-3">Angular.js</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-			  	
-			  	<div class="row">
-			  		<h4 class="col-md-3">Node.js</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-			  	
-			  	<div class="row">
-			  		<h4 class="col-md-3">jQuery</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 88%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-			  	
-			  	<div class="row">
-			  		<h4 class="col-md-3">Bootstrap</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
+		  	<div class='row'>
+			  	<h2 class="col-md-12"><i class="fa fa-cogs"></i> A highly intuitive and completely unsubjective breakdown of my skillsets</h2>
+		  		<div class='col-md-6'>
+				  	<div class="row">
+				  		<h4 class="col-md-4">JavaScript</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
+				  	
+				  	<div class="row">
+				  		<h4 class="col-md-4">Angular.js</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
+				  	
+				  	<div class="row">
+				  		<h4 class="col-md-4">Node.js</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
+				  	
+				  	<div class="row">
+				  		<h4 class="col-md-4">jQuery</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 88%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
+				  	
+				  	<div class="row">
+				  		<h4 class="col-md-4">Bootstrap</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
 
-			  	<div class="row">
-			  		<h4 class="col-md-3">D3.js</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
+				  	<div class="row">
+				  		<h4 class="col-md-4">D3.js</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
 
-			  	<div class="row">
-			  		<h4 class="col-md-3">Ruby On Rails</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-
-			  	<div class="row">
-			  		<h4 class="col-md-3">React.js</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-
-			  	<div class="row">
-			  		<h4 class="col-md-3">Backbone.js</h4>
-			  		<div>
-			  			<div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">
-						  </div>
-						</div>
-			  		</div>
-			  	</div>
-			  	
-		  	</div>
+				  	<div class="row">
+				  		<h4 class="col-md-4">Backbone.js</h4>
+				  		<div>
+				  			<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">
+							  </div>
+							</div>
+				  		</div>
+				  	</div>
+				</div>
+			</div>			  	
 		  	<!-- /Skills -->
 
-		  	<!-- Portfolio -->
-			<!-- <div id="portfolio" style='height:800px'>
-				<h3>Portfolio</h3>
-			</div> -->
-			<!-- /Portfolio -->
+		    <!-- Education -->
+			<div class="section" id="education">
+				<h3>Education</h3>
+			  	<p class='lead'>UC Santa Barbara, BA, Political Science 2007 - 2011</p>
+		  	</div>
+		  	<!-- /Education -->
 
 			<!-- Contact -->
 			<div id="contact" style='height:800px'>
 				<h3>Contact</h3>
 
-				<form action="http://getsimpleform.com/messages?form_api_token=5a5c448c4440d0aedf922051122bb92c" method='post'>
-					<div class='form-group'>
-						<input type='text' name='name' class='form-control' placeholder='Your Name'>
-					</div>
-					<div class='form-group'>
-						<input type='email' name='email' class='form-control' placeholder='Your Email'>
-					</div>
-					<div class='form-group'>
-						<textarea class="form-control" rows="5" name='message' placeholder='Type away!'></textarea>
-					</div>
-					<div class='form-group'>
-						<input type='submit' class='btn btn-lg btn-success pull-right' value='Send'>
-					</div>
-				</form>
-			</div>
+				<a href='mailto:connorleech@gmail.com'>Send me an email</a>
 			<!-- /Contact -->
 		</div>
 		<!-- /MAIN CONTENT -->
+	</div>
+
+	<!-- MODALS -->
+	<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+	    <div class="modal-content">
+	        <div class="close-modal" data-dismiss="modal">
+	            <div class="lr">
+	                <div class="rl">
+	                </div>
+	            </div>
+	        </div>
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-8 col-lg-offset-2">
+	                    <div class="modal-body">
+	                        <!-- Project Details Go Here -->
+	                        <h2>Project Name</h2>
+	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
+	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+	                        <p>
+	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
+	                        <ul class="list-inline">
+	                            <li>Date: July 2014</li>
+	                            <li>Client: Round Icons</li>
+	                            <li>Category: Graphic Design</li>
+	                        </ul>
+	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 
 	<script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>	

@@ -8,3 +8,6 @@ setInterval(function () {
 }, 500);
 
 blinks.style.color = "blue";
+
+// senor javascript developer
+

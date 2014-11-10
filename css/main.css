@@ -10,6 +10,10 @@
   padding: 0 7px;
 }
 
+#blinky-anchor {
+  color: #000080;
+  font-size: 32px;
+}
 
 /* Print/Download resume */
 .tools {

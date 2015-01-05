@@ -8,16 +8,11 @@
 
 	<link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 
-	<!-- Bootstrap -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-	<!-- Font Awesome -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<link rel='stylesheet' href='css/slidebars.css'>
-	<link rel='stylesheet' href='css/agency.css'>
 	<link rel='stylesheet' href='css/main.css'>
 </head>
-
 <body>	
 	<div id="wrapper">
 
@@ -25,19 +20,27 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Connor Leech
-                    </a>
+ 
                 </li>
                 <li>
-                    <a target="_blank" title="Github" href="http://www.github.com/jasonshark"><i class="fa fa-3x fa-github"></i> Github</a>
+                    <a target="_blank" title="@jasonshark" href="http://www.github.com/jasonshark"><i class="fa fa-3x fa-github"></i> Github</a>
                 </li>
                 <li>
-                    <a target="_blank" title="Twitter" href="https://twitter.com/cleechtech"><i class="fa fa-3x fa-twitter"></i> Twitter</a>
+                    <a target="_blank" title="@cleechtech" href="https://twitter.com/cleechtech"><i class="fa fa-3x fa-twitter"></i> Twitter</a>
                 </li>
                 <li>
-                    <a target="_blank" title="LinkedIn" href="http://www.linkedin.com/in/connorleech"><i class="fa fa-3x fa-linkedin"></i> Linkedin</a>
+                    <a target="_blank" title="powered by Ghost" href="http://connorleech.ghost.io/"><i class="fa fa-3x fa-line-chart"></i> Blog</a>
                 </li>
+                <li>
+                    <a target="_blank" title="/connor.leech.37" href="https://www.facebook.com/connor.leech.37"><i class="fa fa-3x fa-facebook"></i> Facebook</a>
+                </li>
+                <li>
+                    <a target="_blank" title="/in/connorleech" href="http://www.linkedin.com/in/connorleech"><i class="fa fa-3x fa-linkedin"></i> Linkedin</a>
+                </li>
+                <li>
+                    <a target="_blank" title="Connor Leech" href="http://stackoverflow.com/users/2031033/connor-leech"><i class="fa fa-3x fa-stack-overflow"></i> stackoverflow</a>
+                </li>
+
             </ul>
         </div>
 		<!-- /NAV -->
@@ -48,529 +51,22 @@
             <div class="row">
 	            <div class="col-lg-12">
 					<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class='fa fa-bars fa-3x'></i></a>
-			    	<div class='tools'>
-						<a href="javascript:if(window.print)window.print()" title="print page"><i class="fa fa-2x fa-print"></i></a>
-						
-						<a target="_blank" href="files/connor_leech.pdf" title="download Connor's resume"><i class="fa fa-2x fa-download"></i></a>
+
+		            <div class="row">
+		            	<div class='text-center'>
+			            	<img class="img-responsive img-thumbnail img-circle" src="./images/connor_leech.jpg" alt="Thumbnail of my face" style='height:180px'>
+						    <h1>Connor Leech</h1>
+					   	</div>
 					</div>
-
-			    	<div id="about-me">
-			            <div class="row">
-			            	<img class="img-responsive img-thumbnail" src="./images/connor_leech.jpg" alt="Thumbnail of my face" style='height:180px'>
-			            	<div class="col-md-7">
-						    	<h1>Connor Leech</h1>
-						   		<h2>Front end developer in the SF Bay Area</h2>
-						   	</div>
-						</div>
-						
-						<div class="well">
-							<p class="lead">Smart creative who likes to take risks and build things quickly</p>
-						</div>
-					</div>
-
-					<!-- Projects Grid Section -->
-				    <section id="portfolio">
-				        <div>
-				            <div class="row">
-				                <div class="text-center">
-				                    <h2>Projects</h2>
-				                    <p class="text-muted">Stuff I've built</p>
-				                </div>
-				            </div>
-				            <div class="row">
-				                <div class="col-md-4 col-sm-6 portfolio-item">
-				                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-				                        <div class="portfolio-hover">
-				                            <div class="portfolio-hover-content">
-				                                <i class="fa fa-plus fa-3x"></i>
-				                            </div>
-				                        </div>
-				                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
-				                    </a>
-				                    <div class="portfolio-caption">
-				                        <h4><a href='http://oakland-crime.herokuapp.com/' target='_blank'>Oakland Crime API</a></h4>
-				                        <p class="text-muted">map making and javascript</p>
-				                    </div>
-				                </div>
-				                
-				                <div class="col-md-4 col-sm-6 portfolio-item">
-				                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-				                        <div class="portfolio-hover">
-				                            <div class="portfolio-hover-content">
-				                                <i class="fa fa-plus fa-3x"></i>
-				                            </div>
-				                        </div>
-				                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
-				                    </a>
-				                    <div class="portfolio-caption">
-				                        <h4><a href='http://bart-usage.herokuapp.com' target='_blank'>BART transit data</a></h4>
-				                        <p class="text-muted">Where's errybody going?</p>
-				                    </div>
-				                </div>
-				                <div class="col-md-4 col-sm-6 portfolio-item">
-				                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-				                        <div class="portfolio-hover">
-				                            <div class="portfolio-hover-content">
-				                                <i class="fa fa-plus fa-3x"></i>
-				                            </div>
-				                        </div>
-				                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
-				                    </a>
-				                    <div class="portfolio-caption">
-				                        <h4>Nairobi Matatu maps</h4>
-				                        <p class="text-muted">Figure out where you're going</p>
-				                    </div>
-				                </div>
-				                <div class="col-md-4 col-sm-6 portfolio-item">
-				                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-				                        <div class="portfolio-hover">
-				                            <div class="portfolio-hover-content">
-				                                <i class="fa fa-plus fa-3x"></i>
-				                            </div>
-				                        </div>
-				                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
-				                    </a>
-				                    <div class="portfolio-caption">
-				                        <h4>Trivial apps</h4>
-				                        <p class="text-muted">Navigating the javascript MV* landscape</p>
-				                    </div>
-				                </div>
-				                <div class="col-md-4 col-sm-6 portfolio-item">
-				                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-				                        <div class="portfolio-hover">
-				                            <div class="portfolio-hover-content">
-				                                <i class="fa fa-plus fa-3x"></i>
-				                            </div>
-				                        </div>
-				                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
-				                    </a>
-				                    <div class="portfolio-caption">
-				                        <h4><a href='https://github.com/jasonshark/exercises' target='_blank'>Nodeschool exercises</a></h4>
-				                        <p class="text-muted">Javascripts @ the command line</p>
-				                    </div>
-				                </div>
-				                <div class="col-md-4 col-sm-6 portfolio-item">
-				                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-				                        <div class="portfolio-hover">
-				                            <div class="portfolio-hover-content">
-				                                <i class="fa fa-plus fa-3x"></i>
-				                            </div>
-				                        </div>
-				                        <img src="http://placekitten.com/400/289" class="img-responsive" alt="">
-				                    </a>
-				                    <div class="portfolio-caption">
-				                        <h4><a href='http://connorlee.ch/d3-example' target='_blank'>D3 playground</a></h4>
-				                        <p class="text-muted">Messing around with data visualization</p>
-				                    </div>
-				                </div>
-				            </div>
-				        </div>
-				    </section>
-				    <!-- /Projects -->
-
-				  	<!-- Skills -->
-				  	<div class='row'>
-					  	<h2 class="col-md-12"><i class="fa fa-cogs"></i> Highly intuitive breakdown</h2>
-				  		<div class='col-md-6'>
-						  	<div class="row">
-						  		<h4 class="col-md-4">JavaScript</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-						  	
-						  	<div class="row">
-						  		<h4 class="col-md-4">Angular.js</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-						  	
-						  	<div class="row">
-						  		<h4 class="col-md-4">Node.js</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-						  	
-						  	<div class="row">
-						  		<h4 class="col-md-4">jQuery</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 88%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-						  	
-						  	<div class="row">
-						  		<h4 class="col-md-4">Bootstrap</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-
-						  	<div class="row">
-						  		<h4 class="col-md-4">D3.js</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-
-						  	<div class="row">
-						  		<h4 class="col-md-4">Backbone.js</h4>
-						  		<div>
-						  			<div class="progress">
-										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-									  </div>
-									</div>
-						  		</div>
-						  	</div>
-						</div>
-					</div>			  	
-				  	<!-- /Skills -->
-
-				    <!-- Education -->
-					<div class="row">
-						<h3>Education</h3>
-					  	<p class='lead'>UC Santa Barbara, BA, Political Science 2007 - 2011</p>
-				  	</div>
-				  	<!-- /Education -->
-
-				  	<!-- PHOTOS -->
-					<div class='row'>
-						<h3 class='text-center'>Photos from Cape Town, South Africa</h3>
-						<!-- PHOTOS -->
-				        <div class="row">
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				        </div>
-
-				        <!-- Photo Row -->
-				        <div class="row">
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				        </div>
-
-				        <!-- Photo Row -->
-				        <div class="row">
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				            <div class="col-md-3 portfolio-item">
-				                <a href="#">
-				                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-				                </a>
-				            </div>
-				        </div>
-
-				        <hr>
-
-				        <!-- Pagination -->
-				        <div class="row text-center">
-				            <div class="col-lg-12">
-				                <ul class="pagination">
-				                    <li>
-				                        <a href="#">&laquo;</a>
-				                    </li>
-				                    <li class="active">
-				                        <a href="#">1</a>
-				                    </li>
-				                    <li>
-				                        <a href="#">2</a>
-				                    </li>
-				                    <li>
-				                        <a href="#">3</a>
-				                    </li>
-				                    <li>
-				                        <a href="#">4</a>
-				                    </li>
-				                    <li>
-				                        <a href="#">5</a>
-				                    </li>
-				                    <li>
-				                        <a href="#">&raquo;</a>
-				                    </li>
-				                </ul>
-				            </div>
-				        </div>
-					</div>
-					<!-- /PHOTOS -->
-
-					<!-- Blinky -->
-					<blink id='blinky'>
-						<a id='blinky-anchor' href='mailto:connorleech@gmail.com'>CONTACT</a>
-					</blink>
-					<!-- /Blinky -->
 				</div>
 			</div>
 		</div>
-		</div>
 		<!-- /MAIN CONTENT -->
-	</div>
-
-	<!-- MODALS -->
-	<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-content">
-	        <div class="close-modal" data-dismiss="modal">
-	            <div class="lr">
-	                <div class="rl">
-	                </div>
-	            </div>
-	        </div>
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2">
-	                    <div class="modal-body">
-	                        <!-- Project Details Go Here -->
-	                        <h2>Project Name</h2>
-	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
-	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-	                        <p>
-	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-	                        <ul class="list-inline">
-	                            <li>Date: July 2014</li>
-	                            <li>Client: Round Icons</li>
-	                            <li>Category: Graphic Design</li>
-	                        </ul>
-	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-content">
-	        <div class="close-modal" data-dismiss="modal">
-	            <div class="lr">
-	                <div class="rl">
-	                </div>
-	            </div>
-	        </div>
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2">
-	                    <div class="modal-body">
-	                        <!-- Project Details Go Here -->
-	                        <h2>Project Name</h2>
-	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
-	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-	                        <p>
-	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-	                        <ul class="list-inline">
-	                            <li>Date: July 2014</li>
-	                            <li>Client: Round Icons</li>
-	                            <li>Category: Graphic Design</li>
-	                        </ul>
-	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-content">
-	        <div class="close-modal" data-dismiss="modal">
-	            <div class="lr">
-	                <div class="rl">
-	                </div>
-	            </div>
-	        </div>
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2">
-	                    <div class="modal-body">
-	                        <!-- Project Details Go Here -->
-	                        <h2>Project Name</h2>
-	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
-	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-	                        <p>
-	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-	                        <ul class="list-inline">
-	                            <li>Date: July 2014</li>
-	                            <li>Client: Round Icons</li>
-	                            <li>Category: Graphic Design</li>
-	                        </ul>
-	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-content">
-	        <div class="close-modal" data-dismiss="modal">
-	            <div class="lr">
-	                <div class="rl">
-	                </div>
-	            </div>
-	        </div>
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2">
-	                    <div class="modal-body">
-	                        <!-- Project Details Go Here -->
-	                        <h2>Project Name</h2>
-	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
-	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-	                        <p>
-	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-	                        <ul class="list-inline">
-	                            <li>Date: July 2014</li>
-	                            <li>Client: Round Icons</li>
-	                            <li>Category: Graphic Design</li>
-	                        </ul>
-	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-content">
-	        <div class="close-modal" data-dismiss="modal">
-	            <div class="lr">
-	                <div class="rl">
-	                </div>
-	            </div>
-	        </div>
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2">
-	                    <div class="modal-body">
-	                        <!-- Project Details Go Here -->
-	                        <h2>Project Name</h2>
-	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
-	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-	                        <p>
-	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-	                        <ul class="list-inline">
-	                            <li>Date: July 2014</li>
-	                            <li>Client: Round Icons</li>
-	                            <li>Category: Graphic Design</li>
-	                        </ul>
-	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-
-	<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-	    <div class="modal-content">
-	        <div class="close-modal" data-dismiss="modal">
-	            <div class="lr">
-	                <div class="rl">
-	                </div>
-	            </div>
-	        </div>
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2">
-	                    <div class="modal-body">
-	                        <!-- Project Details Go Here -->
-	                        <h2>Project Name</h2>
-	                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-	                        <img class="img-responsive" src="img/portfolio/roundicons-free.png" alt="">
-	                        <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-	                        <p>
-	                            <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-	                        <ul class="list-inline">
-	                            <li>Date: July 2014</li>
-	                            <li>Client: Round Icons</li>
-	                            <li>Category: Graphic Design</li>
-	                        </ul>
-	                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	<!-- /MODALS -->		
+	</div>		
 
 
 	<script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>	
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	
-	<script src='js/lib/slidebars.js'></script>
-	<script src='js/lib/blink.js'></script>
 	<script src='js/main.js'></script>
 
 	<!-- Google Analytics -->

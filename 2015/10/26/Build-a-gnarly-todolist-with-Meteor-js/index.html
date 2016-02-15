@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Build a gnarly todolist with Meteor.js - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="So I’ve gone through how to build a barebones, functional, fullstack application with meteor in How to build an app using Meteor.js. That said, it is not impressive. Last week I went through Eventedmi">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Build a gnarly todolist with Meteor.js">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="So I’ve gone through how to build a barebones, functional, fullstack application with meteor in How to build an app using Meteor.js. That said, it is not impressive. Last week I went through Eventedmi">
+<meta property="og:image" content="http://media.giphy.com/media/4P1nnTxsFtsje/giphy.gif">
+<meta property="og:image" content="https://40.media.tumblr.com/f0c2c2079b4978c2b99a46dc5f2edbc5/tumblr_mi3cxcm9w21rj4nx4o1_540.jpg">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/05/good_luck.gif">
+<meta property="og:updated_time" content="2015-11-29T19:25:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Build a gnarly todolist with Meteor.js">
+<meta name="twitter:description" content="So I’ve gone through how to build a barebones, functional, fullstack application with meteor in How to build an app using Meteor.js. That said, it is not impressive. Last week I went through Eventedmi">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Build a gnarly todolist with Meteor.js
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Mon Oct 26 2015 16:50:15 GMT-0700">
+	
+		    Oct 26, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>So I’ve gone through how to build a barebones, functional, fullstack application with meteor in <a href="http://connorleech.ghost.io/how-to-build-an-app-using-meteor-js/" target="_blank" rel="external">How to build an app using Meteor.js</a>. That said, it is not impressive. Last week I went through Eventedmind’s excellent course on how to <a href="https://www.eventedmind.com/classes/build-a-multi-page-app-with-iron-meteor-6737880d" target="_blank" rel="external">Build a multi page app with iron meteor</a>. It is a bit like how to build a barebones blog, complete with authentication.</p>
+<a id="more"></a>
+<p>The <a href="http://js-meteor-todos.meteor.com/" target="_blank" rel="external">DEMO</a> is here. I used meteor’s built in deployment. I had <a href="https://github.com/iron-meteor/iron-cli/issues/153" target="_blank" rel="external">some trouble</a> deploying the app to heroku. Suggestions welcome!</p>
+<p>Rather than copying the eventedmind tutorial I’m going to point out some cool pieces of the <a href="https://github.com/jasonshark/meteor-todos" target="_blank" rel="external">CODE</a>.</p>
+<h3 id="First_off">First off</h3><p><img src="http://media.giphy.com/media/4P1nnTxsFtsje/giphy.gif" alt="imma let you finish"></p>
+<p>The app is structured using the Iron command line tool. Iron is like yeoman but for meteor apps. If that’s not helpful ignore it. To handle routing with meteor you will most likely use Iron Router. This is iron scaffolding. It’s an opinionated, structured way to build your meteor apps. To build an empty skeleton you go like:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>npm install -g iron-meteor</span><br><span class="line"><span class="variable">$ </span>git clone &lt;repo_url&gt;</span><br><span class="line"><span class="variable">$ </span>cd meteor-todos</span><br><span class="line"><span class="variable">$ </span>iron</span><br></pre></td></tr></table></figure>
+<p>Next we’ll add helpful packages and remove some crappy ones.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ iron <span class="built_in">add</span> less</span><br><span class="line">$ iron <span class="built_in">add</span> bootstrap</span><br><span class="line">$ iron <span class="built_in">add</span> accounts-ui</span><br><span class="line">$ iron <span class="built_in">add</span> accounts-meteor-developer</span><br><span class="line">$ iron <span class="built_in">add</span> momentj<span class="variable">s:moment</span></span><br><span class="line">$ iron <span class="built_in">remove</span> autopublish</span><br><span class="line">$ iron <span class="built_in">remove</span> insecure</span><br></pre></td></tr></table></figure>
+<p>The accounts-ui and accounts-meteor-developer abstract away all authentication headache. There are also accounts-facebook, accounts-google, accounts-twitter packages. The last two come by default and we want to turn them off. Insecure allows you to write to the database from the console (don’t want that) and autopublish makes all data accessible. The code from the tutorial uses best practices.</p>
+<h3 id="Structure">Structure</h3><p>All the app’s code is in the <a href="https://github.com/jasonshark/meteor-todos/tree/master/app" target="_blank" rel="external">app</a> folder. This is exactly the code that’d be generated by running <code>meteor create my_app_name</code>. If you want to run any <code>meteor</code> commands cd into the app folder and you’re good to go. (That’s exactly how I deployed [<code>$ cd app $ meteor deploy</code>]).</p>
+<p>The main folders within app to worry about are <code>client</code>, <code>lib</code> and <code>server</code>. As specified in the <a href="http://docs.meteor.com/#/basic/filestructure" target="_blank" rel="external">documentation</a> client only runs on client, server only on server and lib runs on both.</p>
+<h3 id="lib">lib</h3><p>I’ll start with lib cause that’s where our routes are defined. They look like: </p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Router</span><span class="class">.configure</span>(&#123;</span><br><span class="line">  <span class="attribute">layoutTemplate</span>: <span class="string">'MasterLayout'</span>,</span><br><span class="line">  <span class="attribute">loadingTemplate</span>: <span class="string">'Loading'</span>,</span><br><span class="line">  <span class="attribute">notFoundTemplate</span>: <span class="string">'NotFound'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="tag">Router</span><span class="class">.route</span>(<span class="string">'/'</span>, &#123;</span><br><span class="line">  <span class="attribute">name</span>: <span class="string">'home'</span>,</span><br><span class="line">  <span class="attribute">controller</span>: <span class="string">'HomeController'</span>,</span><br><span class="line">  <span class="attribute">action</span>: <span class="string">'action'</span>,</span><br><span class="line">  <span class="attribute">where</span>: <span class="string">'client'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="tag">Router</span><span class="class">.route</span>(<span class="string">'/todos/:_id'</span>, &#123;</span><br><span class="line">	<span class="attribute">name</span>: <span class="string">'todos.detail'</span>,</span><br><span class="line">	<span class="attribute">controller</span>: <span class="string">'TodosController'</span>,</span><br><span class="line">	<span class="attribute">action</span>: <span class="string">'detail'</span>,</span><br><span class="line">	<span class="attribute">where</span>: <span class="string">'client'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="tag">Router</span><span class="class">.route</span>(<span class="string">'/todos/:_id/edit'</span>, &#123;</span><br><span class="line">	<span class="attribute">name</span>: <span class="string">'todos.edit'</span>,</span><br><span class="line">	<span class="attribute">controller</span>: <span class="string">'TodosController'</span>,</span><br><span class="line">	<span class="attribute">action</span>: <span class="string">'edit'</span>,</span><br><span class="line">	<span class="attribute">where</span>: <span class="string">'client'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="tag">Router</span><span class="class">.route</span>(<span class="string">'/users/:_id'</span>, &#123;</span><br><span class="line">  <span class="attribute">name</span>: <span class="string">'users.detail'</span>,</span><br><span class="line">  <span class="attribute">controller</span>: <span class="string">'UsersController'</span>,</span><br><span class="line">  <span class="attribute">action</span>: <span class="string">'detail'</span>,</span><br><span class="line">  <span class="attribute">where</span>: <span class="string">'client'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>In my previous post on meteor we did not use controllers, now we do. The controller looks like this:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">TodosController = RouteController.extend(&#123;</span><br><span class="line">  subscriptions: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.subscribe(<span class="string">'todoDetail'</span>, <span class="keyword">this</span>.params._id);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// set data context for controller</span></span><br><span class="line">  data: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Todos.findOne(&#123;_id: <span class="keyword">this</span>.params._id&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  detail: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.render(<span class="string">'TodosDetail'</span>, &#123;&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  edit: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// reactive state variable saying we're in edit mode</span></span><br><span class="line">    <span class="keyword">this</span>.state.<span class="keyword">set</span>(<span class="string">'isEditing'</span>, <span class="literal">true</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">this</span>.render(<span class="string">'TodosDetail'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>And finally we have a collection in <code>app/collections/todos.js</code>:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Todos = <span class="keyword">new</span> Mongo.Collection(<span class="string">'todos'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if server define security rules</span></span><br><span class="line"><span class="comment">// server code and code inside methods are not affected by allow and deny</span></span><br><span class="line"><span class="comment">// these rules only apply when insert, update, and remove are called from untrusted client code</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (Meteor.isServer) &#123;</span><br><span class="line">  <span class="comment">// first argument is id of logged in user. (null if not logged in)</span></span><br><span class="line">  Todos.allow(&#123;</span><br><span class="line">    <span class="comment">// can do anythin if you own the document</span></span><br><span class="line">    insert: <span class="function"><span class="keyword">function</span> <span class="params">(userId, doc)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> userId === doc.userId;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    update: <span class="function"><span class="keyword">function</span> <span class="params">(userId, doc, fieldNames, modifier)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> userId === doc.userId;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    remove: <span class="function"><span class="keyword">function</span> <span class="params">(userId, doc)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> userId === doc.userId;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The deny method lets you selectively override your allow rules</span></span><br><span class="line">  <span class="comment">// every deny callback must return false for the database change to happen</span></span><br><span class="line">  Todos.deny(&#123;</span><br><span class="line">    insert: <span class="function"><span class="keyword">function</span> <span class="params">(userId, doc)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    update: <span class="function"><span class="keyword">function</span> <span class="params">(userId, doc, fieldNames, modifier)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    remove: <span class="function"><span class="keyword">function</span> <span class="params">(userId, doc)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>That’s kind of a lot of code, but for what it does it aint.</p>
+<p><img src="https://40.media.tumblr.com/f0c2c2079b4978c2b99a46dc5f2edbc5/tumblr_mi3cxcm9w21rj4nx4o1_540.jpg" alt=""></p>
+<p>The todo collection creates a MongoDB collection in the database that is accessible in the global <code>Todos</code> variable on the client and the server. The allow and deny callbacks handle our database permissions and security.</p>
+<h3 id="Server">Server</h3><p>The coolest thing on the server is the <a href="https://github.com/jasonshark/meteor-todos/blob/master/app/server/publish.js" target="_blank" rel="external">code</a> that publishes out our data:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Meteor.publish('items', function (param1, param2) &#123;</span><br><span class="line"> *  this.ready();</span><br><span class="line"> * &#125;);</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> allUsersCursor = Meteor.users.find(&#123;&#125;, &#123; fields: &#123; profile: <span class="number">1</span> &#125;&#125;);</span><br><span class="line"><span class="keyword">var</span> getCursorForUser = <span class="function"><span class="keyword">function</span><span class="params">(id)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Meteor.users.find(&#123;_id: id&#125;, &#123;fields: &#123; profile: <span class="number">1</span> &#125;&#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Meteor.publish(<span class="string">'todos'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// no data published if you're not logged in</span></span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">this</span>.userId) <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// only allow people to see their own todos</span></span><br><span class="line">	<span class="comment">// this is currently logged in user</span></span><br><span class="line">	<span class="keyword">return</span> Todos.find(&#123;userId: <span class="keyword">this</span>.userId&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Meteor.publish(<span class="string">'todoDetail'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(id)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">this</span>.userId) <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> todo = Todos.findOne(&#123; _id:id &#125;);</span><br><span class="line">	<span class="comment">// get cursors for user who owns todo and todo itself</span></span><br><span class="line">	<span class="comment">// fields specifies what to make available</span></span><br><span class="line">	<span class="keyword">return</span> [</span><br><span class="line">		getCursorForUser(todo.userId),</span><br><span class="line">		Todos.find(&#123;_id: id&#125;),</span><br><span class="line">		Comments.find(&#123;todoId: id&#125;, &#123; sort: &#123;createdAt: <span class="number">1</span>&#125;&#125;)</span><br><span class="line">	];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Meteor.publish(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(<span class="comment">/* args */</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">this</span>.userId) <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// publish all users but specify which fields to make available</span></span><br><span class="line">	<span class="keyword">return</span> allUsersCursor;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Meteor.publish(<span class="string">'user'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(userId)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">this</span>.userId) <span class="keyword">return</span> <span class="keyword">this</span>.ready();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// publish user data and their todos</span></span><br><span class="line">  <span class="keyword">return</span> [</span><br><span class="line">  	getCursorForUser(userId),</span><br><span class="line">  	Todos.find(&#123;userId: userId&#125;)</span><br><span class="line">  ];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>In meteor you specify on the server what data to make accessible via publish functions. On the client you subscribe to that data. We handle our subscriptions in the controller. So scroll up and check out the Controller code. You’ll see:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">subscriptions: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.subscribe(<span class="string">'todoDetail'</span>, <span class="keyword">this</span>.params._id);</span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line"> <span class="comment">// set data context for controller</span></span><br><span class="line"> data: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> Todos.findOne(&#123;_id: <span class="keyword">this</span>.params._id&#125;);</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<p>So we publish todoDetail on the server and then subscribe to it in the controller. This separates where data is accessible in your app. The data value is what specifically is available in your templates. Check out <a href="https://www.discovermeteor.com/blog/a-guide-to-meteor-templates-data-contexts/" target="_blank" rel="external">this guide to data contexts</a>. The difference between data contexts and subscriptions confused me for a bit. We’ll see how it works on the…</p>
+<h3 id="client">client</h3><p>We genereate templates using <code>$ iron g:template todos/todos_list</code> and commands like that. You can <a href="https://github.com/jasonshark/meteor-todos/tree/master/app/client/templates/todos" target="_blank" rel="external">see</a> the app is way broken up and every html file has a javascript file associated with it. This is where data context comes in. Each template has a name and associated <code>helpers</code> and <code>events</code> functions. Helpers essentially use the data context to show the data. Events are where you handle form submission, clicks, hovers etc using basically straight up jQuery. No directives or anything. Here’s the code for showing a todos detail and being able to edit it:</p>
+<p><strong>app/client/templates/todos/todos_detail/todos_detail.js</strong><br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Template.TodosDetail.events(&#123;</span><br><span class="line">	<span class="comment">// submit edit todo form</span></span><br><span class="line">	<span class="string">'submit form.edit-todo'</span>: <span class="function"><span class="keyword">function</span><span class="params">(e, tmpl)</span></span>&#123;</span><br><span class="line">		e.preventDefault();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> subject = tmpl.find(<span class="string">'input[name=subject]'</span>).value;</span><br><span class="line">		<span class="keyword">var</span> description = tmpl.find(<span class="string">'[name=description]'</span>).value;</span><br><span class="line">		<span class="keyword">var</span> id = <span class="keyword">this</span>._id;</span><br><span class="line"></span><br><span class="line">		Todos.update(&#123;_id: id&#125;, &#123;</span><br><span class="line">			$<span class="keyword">set</span>: &#123;</span><br><span class="line">				subject: subject,</span><br><span class="line">				description: description,</span><br><span class="line">				updatedAt: <span class="keyword">new</span> Date</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// reroute and pass data context</span></span><br><span class="line">		Router.go(<span class="string">'todos.detail'</span>, &#123;_id: id&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Template.TodosDetail.helpers(&#123;</span><br><span class="line">	isMyTodo: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.userId === Meteor.userId();</span><br><span class="line">	&#125;,</span><br><span class="line">	todoOwner: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">// data context is the todo</span></span><br><span class="line">		<span class="keyword">var</span> todo = <span class="keyword">this</span>;</span><br><span class="line">		<span class="keyword">return</span> Meteor.users.findOne(&#123;_id: todo.userId&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>So specify events for the template with jquery selectors as the values, like <code>submit form.edit-todo</code> then a function that gets the template and event as arguments. We write to the database using the global <code>Todos</code> collection. <code>update()</code> and <code>$set</code> are from MongoDB. Meteor uses mongodb so get familiar. The reason we can do this update is because we allow it when we define the todos collection. In the <a href="https://github.com/jasonshark/meteor-todos/blob/master/app/lib/controllers/todos_controller.js" target="_blank" rel="external">todos controller</a> (shown in the lib directory) we set the <code>data</code> value to be the specific todo whose id is a param from the url bar.</p>
+<p>todos controller sets the data context:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">data</span>: <span class="tag">function</span> () &#123;</span><br><span class="line">    <span class="tag">return</span> <span class="tag">Todos</span><span class="class">.findOne</span>(&#123;<span class="attribute">_id</span>: this.params._id&#125;);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>So in our template helper <code>this</code> is the data context that we specified in the controller. It is kind of crazy and easy to get confused. That’s why we give it a variable name. We be humans, not machines.</p>
+<p>The code I’m talking about where we use the data context from the controller:<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">todoOwner: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// data context is the todo</span></span><br><span class="line">	<span class="keyword">var</span> todo = <span class="keyword">this</span>;</span><br><span class="line">	<span class="keyword">return</span> Meteor.users.findOne(&#123;_id: todo.userId&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Have a look through the code. I recommend the eventedmind screencast, that’s how I built this thang. If you have more questions hit me up on <a href="https://twitter.com/cleechtech" target="_blank" rel="external">twitter</a>.</p>
+<p><img src="/content/images/2015/05/good_luck.gif" alt=""></p>
+<h3 id="Other_helpful_bits">Other helpful bits</h3><p><strong>Authentication</strong></p>
+<p><code>{{> loginButons }}</code> in the template helps to get auth configured.</p>
+<p>Programmatically <a href="http://docs.meteor.com/#/full/meteor_loginwithexternalservice" target="_blank" rel="external">configure</a> OAuth provider: <code>$ iron add service-configuration</code></p>
+<p><strong>Startup</strong></p>
+<p><code>server/bootstrap.js</code> is where any code goes that needs to run when we startup the server. Access environment variables from <code>config/development/env.sh</code> by using <code>process.env[&#39;variable_name&#39;]</code></p>
+<p><strong>Database</strong></p>
+<p>Activate a mongo shell for the current database with <code>$ iron mongo</code>. What user records look like in database:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ meteor mongo</span><br><span class="line">MongoDB shell version: <span class="number">2.6</span><span class="number">.7</span></span><br><span class="line">connecting to: <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">3001</span>/meteor</span><br><span class="line"></span><br><span class="line">meteor:PRIMARY&gt; show collections</span><br><span class="line">	meteor_accounts_loginServiceConfiguration</span><br><span class="line">	meteor_oauth_pendingCredentials</span><br><span class="line">	system.indexes</span><br><span class="line">	users</span><br><span class="line">meteor:PRIMARY&gt; db.meteor_accounts_loginServiceConfiguration.find().pretty()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"_id"</span> : <span class="string">"MJRdreKXQ8NCPnhH7"</span>,</span><br><span class="line">		<span class="string">"service"</span> : <span class="string">"meteor-developer"</span>,</span><br><span class="line">		<span class="string">"clientId"</span> : <span class="string">"Dyv7PX6SWqQXhLCxZ"</span>,</span><br><span class="line">		<span class="string">"secret"</span> : <span class="string">"hDePgZTKMMw6ksGKbGj3gC75TwXRpkhECh"</span>,</span><br><span class="line">		<span class="string">"loginStyle"</span> : <span class="string">"popup"</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>The above is what meteor uses to register our users. The below is what user records look like.</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">meteor:PRIMARY&gt; db.users.find().pretty()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="string">"_id"</span> : <span class="string">"kj8iq7dpzbMGseDPy"</span>,</span><br><span class="line">		<span class="string">"createdAt"</span> : ISODate(<span class="string">"2015-05-21T21:59:46.840Z"</span>),</span><br><span class="line">		<span class="string">"services"</span> : &#123;</span><br><span class="line">			<span class="string">"meteor-developer"</span> : &#123;</span><br><span class="line">				<span class="string">"accessToken"</span> : <span class="string">"EzYgczXRvYRR6AyMG"</span>,</span><br><span class="line">				<span class="string">"expiresAt"</span> : NaN,</span><br><span class="line">				<span class="string">"username"</span> : <span class="string">"connorleech"</span>,</span><br><span class="line">				<span class="string">"emails"</span> : [</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="string">"address"</span> : <span class="string">"connorleech@gmail.com"</span>,</span><br><span class="line">						<span class="string">"primary"</span> : true,</span><br><span class="line">						<span class="string">"verified"</span> : true</span><br><span class="line">					&#125;</span><br><span class="line">				],</span><br><span class="line">				<span class="string">"id"</span> : <span class="string">"zkS6ewa9nyYcPAgah"</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">"resume"</span> : &#123;</span><br><span class="line">				<span class="string">"loginTokens"</span> : [ ]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="string">"profile"</span> : &#123;</span><br><span class="line">			<span class="string">"name"</span> : <span class="string">"connorleech"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>Access users in the browser console by typing: <code>Meteor.users.find().fetch()</code>. </p>
+<p><code>.find()</code> returns a cursor. <code>.fetch()</code> turns the cursor into an array</p>
+<p>security rules on <code>lib/collections/todos.js</code> prevent unauthorized writes to database.</p>
+<p><strong>iron commands</strong></p>
+<p>Add a publish function: <code>$ iron g:publish todos</code><br>Create collection in mongo database: <code>$ iron g:collection todos</code></p>
+<p>Subscribe to publications within your controller.</p>
+<h3 id="Heroku">Heroku</h3><p>I tried to deploy with this:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ heroku login</span><br><span class="line">$ heroku gi<span class="variable">t:remote</span> -<span class="keyword">a</span> &lt;name-of-heroku-app&gt;</span><br><span class="line">$ heroku confi<span class="variable">g:set</span> BUILDPACK_URL=http<span class="variable">s:</span>//github.<span class="keyword">com</span>/lirbank/meteor-buildpack-horse.git</span><br><span class="line">$ heroku confi<span class="variable">g:set</span> ROOT_URL=http<span class="variable">s:</span>//&lt;yourapp&gt;.herokuapp.<span class="keyword">com</span></span><br><span class="line">$ git push heroku master</span><br><span class="line">$ heroku <span class="keyword">open</span></span><br></pre></td></tr></table></figure>
+<p>I think something was wrong with my environment variables. The provided meteor deployment platform works for me for now.</p>
+<p>Hope this is helpful! yeah I’m on <a href="https://twitter.com/cleechtech" target="_blank" rel="external">twitter</a></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Meteor/">Meteor</a> <a class="tag tag--primary tag--small t-link" href="/tags/Todo/">Todo</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/29/5-Steps-in-the-Sales-Process/"  data-tooltip="5 Steps in the Sales Process">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/Set-up-drf-to-play-well-with-angular-templates/" data-tooltip="Set up drf to play well with angular templates">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/29/5-Steps-in-the-Sales-Process/"  data-tooltip="5 Steps in the Sales Process">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/Set-up-drf-to-play-well-with-angular-templates/" data-tooltip="Set up drf to play well with angular templates">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/26/Build-a-gnarly-todolist-with-Meteor-js/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

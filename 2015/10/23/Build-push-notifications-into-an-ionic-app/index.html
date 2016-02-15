@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Build push notifications into an ionic app - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="sample code on github here.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Build push notifications into an ionic app">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="sample code on github here.">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-12-at-6-54-09-PM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-12-at-6-54-33-PM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-12-at-7-04-28-PM.png">
+<meta property="og:updated_time" content="2015-11-29T19:26:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Build push notifications into an ionic app">
+<meta name="twitter:description" content="sample code on github here.">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Build push notifications into an ionic app
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Fri Oct 23 2015 17:46:00 GMT-0700">
+	
+		    Oct 23, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>sample code on <a href="https://github.com/jasonshark/ionic-push-starter" target="_blank" rel="external">github here</a>.</p>
+<a id="more"></a>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ionic start ionic-push-starter io</span><br><span class="line"><span class="variable">$ </span>cd ionic-push-starter</span><br><span class="line"><span class="variable">$ </span>ionic upload</span><br></pre></td></tr></table></figure>
+<p>Your app should be available at <a href="https://apps.ionic.io/apps" target="_blank" rel="external">ionic.io</a>. Theoretically you can view your apps with Ionic View, a mobile app. I’m running android 4.1.2 and it no workey.</p>
+<p>Add a plugin for connecting to the internet with android:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cordova <span class="keyword">plugin</span> add cordova-<span class="keyword">plugin</span>-whitelist</span><br></pre></td></tr></table></figure>
+<p>With my testing my other ionic apps missing this plugin was driving me crazy <a href="https://blog.nraboy.com/2015/05/whitelist-external-resources-for-use-in-ionic-framework/" target="_blank" rel="external">this blog post</a> helped me out. The author has a lot of good tutorials.</p>
+<p>Paste in this code to <code>www/js/app.js</code>:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.config([<span class="string">'$ionicAppProvider'</span>, <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$ionicAppProvider</span>)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Identify app</span></span><br><span class="line">  <span class="variable">$ionicAppProvider</span>.identify(&#123;</span><br><span class="line">    <span class="comment">// The App ID (from apps.ionic.io) for the server</span></span><br><span class="line">    app_id: <span class="string">'YOUR_APP_ID'</span>,</span><br><span class="line">    <span class="comment">// The public API key all services will use for this app</span></span><br><span class="line">    api_key: <span class="string">'YOUR_PUBLIC_API_KEY'</span>,</span><br><span class="line">    <span class="comment">// The GCM project ID (project number) from your Google Developer Console (un-comment if used)</span></span><br><span class="line">    <span class="comment">// gcm_id: 'YOUR_GCM_ID'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;])</span><br></pre></td></tr></table></figure>
+<p>The <code>app_id</code> comes from <a href="https://apps.ionic.io/apps" target="_blank" rel="external">https://apps.ionic.io/apps</a> and look your at your app’s id. <code>api_key</code> comes from your apps page &gt; Settings &gt; Keys &gt; Public Key.</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic platform <span class="keyword">add </span><span class="keyword">android</span><br><span class="line"></span>$ ionic <span class="keyword">build </span><span class="keyword">android</span></span><br></pre></td></tr></table></figure>
+<p>This will build your android application. I email this file: <code>ionic-push-starter/platforms/android/build/outputs/apk/android-debug.apk</code> to myself and download my app on my phone. <code>.apk</code> is the filetype of your android app. Ionic converts your html, css and js into native code.</p>
+<p>Email the above file to yourself. You may have to disable some security settings on your android phone.</p>
+<p>Note:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ionic emulate android</span><br><span class="line"><span class="variable">$ </span>ionic serve</span><br></pre></td></tr></table></figure></p>
+<p>Are the ways to test in the emulator and browser. We don’t have push notification functionality there. To use the android emulator you must have the android sdk installed. Push notifications must be tested on a physical device. Open the app, go to the push tab, you’ll see Ionic’s note on that.</p>
+<h4 id="set_up_Google_Cloud_Messaging">set up Google Cloud Messaging</h4><p>This is all pretty much from the <a href="http://docs.ionic.io/v1.0/docs/push-android-setup" target="_blank" rel="external">docs</a>.</p>
+<p>Click “Create Project” on <a href="https://console.developers.google.com/project" target="_blank" rel="external">google developer console</a>.</p>
+<p>Copy in the top bar your <strong>Project ID</strong> and <strong>Project Number</strong>. The Project Number will later become your <strong>GCM sender ID</strong>. </p>
+<p>Turn on <strong>Google Cloud Messaging for Android</strong> under Mobile APIs.</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-12-at-6-54-09-PM.png" alt=""></p>
+<p>Then click “Enable API”. It is taking a bit of time for me</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-12-at-6-54-33-PM.png" alt=""></p>
+<p>Then create API Public Access Key. Click <strong>Create new Key</strong>.</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-12-at-7-04-28-PM.png" alt=""></p>
+<p>From the ionic docs</p>
+<blockquote>
+<p>In the Create a new key dialog, click Server key.</p>
+<p>In the resulting configuration dialog leave the box blank to allow connections from any IP</p>
+</blockquote>
+<p>Save the <strong>API Key</strong> that was generated.</p>
+<p>Send the google key to the ionic push service. They will be taking care of this for us.</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ionic push --google-api-<span class="keyword">key</span> your-google-api-<span class="keyword">key</span></span><br><span class="line">Google API <span class="keyword">Key</span> Saved</span><br></pre></td></tr></table></figure>
+<h4 id="Back_to_the_code">Back to the code</h4><p>In <code>www/js/app.js</code> go into the <code>.config</code> block we copied in earlier. Uncomment the <code>gcm_id</code> property and add the <strong>Project Number</strong> that’s on the homepage of your google app (click Overview).</p>
+<p>Add the plugin:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic plugin <span class="built_in">add</span> http<span class="variable">s:</span>//github.<span class="keyword">com</span>/phonegap-build/PushPlugin.git</span><br></pre></td></tr></table></figure>
+<p>Now email the app to yourself, download it on your phone. Click register and an alert box with the token will appear</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Angular/">Angular</a> <a class="tag tag--primary tag--small t-link" href="/tags/Ionic/">Ionic</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Build-todo-list-with-angular-and-DRF/"  data-tooltip="Build todo list with angular and DRF">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Build-a-todo-app-with-angularFire/" data-tooltip="Build a todo app with angularFire">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Build-todo-list-with-angular-and-DRF/"  data-tooltip="Build todo list with angular and DRF">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Build-a-todo-app-with-angularFire/" data-tooltip="Build a todo app with angularFire">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/Build-push-notifications-into-an-ionic-app/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

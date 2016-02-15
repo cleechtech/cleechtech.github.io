@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>How to build an app using Meteor.js - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="Oh hurrow Meteor.js">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="How to build an app using Meteor.js">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="Oh hurrow Meteor.js">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/04/Screen-Shot-2015-04-08-at-10-38-08-AM-1.png">
+<meta property="og:updated_time" content="2015-11-29T19:32:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to build an app using Meteor.js">
+<meta name="twitter:description" content="Oh hurrow Meteor.js">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            How to build an app using Meteor.js
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Fri Oct 23 2015 17:53:53 GMT-0700">
+	
+		    Oct 23, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Oh hurrow Meteor.js<br><a id="more"></a></p>
+<p>Here’s a quick tutorial about how to build a full stack website (front end code, server and database) using <a href="https://www.meteor.com/" target="_blank" rel="external">meteor.js</a>.</p>
+<p>Here’s the final <a href="https://github.com/jasonshark/leaderboard" target="_blank" rel="external">source code</a> and the <a href="http://jasonshark-leaderboard.meteor.com/" target="_blank" rel="external">demo app</a>.</p>
+<h6 id="Get_started">Get started</h6><p>Install meteor, create an app and run it on port 3000:<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl http<span class="variable">s:</span>//install.meteor.<span class="keyword">com</span>/ | <span class="keyword">sh</span></span><br><span class="line">meteor create leaderboard</span><br><span class="line"><span class="keyword">cd</span> leaderboard</span><br><span class="line">meteor</span><br></pre></td></tr></table></figure></p>
+<p>You’ll see the default app. Open your browser to localhost:3000 and also take a look around at the code generated.</p>
+<h6 id="syntax_runthrough">syntax runthrough</h6><p><code>{{> hello}}</code> renders the <code>&lt;template&gt;</code> with name=”hello”. Meteor is very good about finding these templates. We will store ours in a directory called <code>client</code>.</p>
+<p><code>Template.hello.helpers({ ... }</code> Meteor helper functions match to a specific template. Helper functions make calls to the server to get data that is rendered in the template</p>
+<p><code>Template.hello.events({})</code> these use javascript/jQuery selectors as the keys and executes the value functions when those events take place. Again the events are listened for only with the hello template.</p>
+<h6 id="project_structure">project structure</h6><p>Delete all the generated files except .meteor directory. Create three new directories: <code>mkdir client server lib</code></p>
+<p>These are all <a href="http://docs.meteor.com/#/basic/filestructure" target="_blank" rel="external">special directories</a> for meteor. Javascript in meteor is largely isomorphic, meaning it can be run on client and server. By segregating our code into these directories we have separation of concerns. <code>lib</code> is for js code that runs on client and the server.</p>
+<h6 id="render_html">render html</h6><p>Create a file client/layout.html and start the meteor server like before. Add elements to the file<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">title</span>&gt;</span>Leaderboard<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Leaderboard<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Everything’s taken care of by meteor and the layout template is magically rendered. Include a template we have not defined in the body after the <code>&lt;h1&gt;</code>. Add <code>{{> players_list}}</code></p>
+<p>Everything breaks and the layout disappears. Check the browser’s javascript console: “Uncaught Error: No such template: players_list” Let’s define it!</p>
+<p>Create a file in client/players_list.html and make a template<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">template</span> name=<span class="string">"players_list"</span>&gt;</span><br><span class="line">	<span class="type">List</span> <span class="keyword">of</span> players will go here</span><br><span class="line">&lt;/<span class="keyword">template</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<h6 id="define_a_collection">define a collection</h6><p>We will have a collection of players in our database. Meteor uses MongoDB. What’s crazy is we can make database calls in our client javascript that will be executed immediately in a local copy of the database that sits in the browser called miniMongo. Bottom line is we want our collection available on the client and the server. Make a file lib/players.js and create a collection in the database<br><code>PlayersList = new Mongo.Collection(&#39;players&#39;);</code></p>
+<p>To render and manipulate the collection we will use helper functions. Make a file client/players_list.js</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Template.players_list.helpers(&#123;</span><br><span class="line">  <span class="string">'player'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// descending score order</span></span><br><span class="line">    <span class="comment">// if score is the same sort ascending alphabetically</span></span><br><span class="line">    <span class="keyword">return</span> PlayersList.find(&#123;&#125;, &#123;sort: &#123;score: -<span class="number">1</span>, name: <span class="number">1</span>&#125; &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Here we match a variable player to the returning result from a meteor-MongoDB <a href="http://docs.meteor.com/#/basic/Mongo-Collection-find" target="_blank" rel="external">find query</a>. This result we can render on the client like whoa: . Though this will actually return a “cursor”. Right now go into the browser js console and execute the query: <code>PlayersList.find({}, {sort: {score: -1, name: 1} })</code>. This will return a cursor that will be easily rendered in a moment. <code>PlayersList.find().fetch()</code> returns a cursor of all elements in the collection and then changes that into an array. The array is empty cause we have nothing in the database.<br><img src="/content/images/2015/04/Screen-Shot-2015-04-08-at-10-38-08-AM-1.png" alt=""></p>
+<p>Update client/players_list.html so it is ready to render a list of players<br><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">    </span><span class="expression">&#123;&#123;<span class="begin-block">#<span class="keyword">each</span> player</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"player"</span>&gt;</span></span><br><span class="line">            </span><span class="expression">&#123;&#123;<span class="variable">name</span>&#125;&#125;</span><span class="xml">: </span><span class="expression">&#123;&#123;<span class="variable">score</span>&#125;&#125;</span><span class="xml"> </span><br><span class="line">            <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"increment"</span>&gt;</span>Upvote<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"decrement"</span>&gt;</span>Downvote<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"remove"</span>&gt;</span>Remove<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    </span><span class="expression">&#123;&#123;<span class="end-block">/<span class="keyword">each</span></span>&#125;&#125;</span><span class="xml"></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h6 id="add_to_collection_form">add to collection form</h6><p>Add the markup to render a template in layout.html: <code>{{> add_player}}</code></p>
+<p>Then create a file client/add_player.html<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">template</span> <span class="attribute">name</span>=<span class="value">"add_player"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"player_name"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Add Player"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>You’ll now see our form rendered on our site. In order to handle form submission and add to the collection we must capture the form submit event that will be fired from the <code>add_player</code> template. Make client/add_player.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Template.add_player.events(&#123;</span><br><span class="line">	<span class="string">'submit form'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e, tmpl</span>)</span>&#123;</span><br><span class="line">		e.preventDefault();</span><br><span class="line">		<span class="keyword">var</span> player_name = 	$(e.target).find(<span class="string">'[name=player_name]'</span>).val();</span><br><span class="line">		$(e.target).find(<span class="string">'[name=player_name]'</span>).val(<span class="string">''</span>);</span><br><span class="line">		</span><br><span class="line">		Meteor.call(<span class="string">'add_player'</span>, player_name)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Breaking this down, the function will execute on form submit. We’ll prevent the browser’s default action, grab the input field value and reset the form using jQuery then we call a “<a href="http://docs.meteor.com/#/basic/methods" target="_blank" rel="external">Meteor method</a>“.</p>
+<p>Define our add player method on the server so it is secure. Add a file <code>server/player_methods.js</code><br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Meteor.methods(&#123;</span><br><span class="line">	<span class="string">'add_player'</span>: <span class="function"><span class="keyword">function</span><span class="params">(player)</span></span>&#123;</span><br><span class="line">		PlayersList.insert(&#123;</span><br><span class="line">			name: player,</span><br><span class="line">			score: <span class="number">0</span></span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Add players with the form and they’ll pop up in the browser.</p>
+<h6 id="insecure_package">insecure package</h6><p>Meteor comes with an “insecure” package. Let’s remove that. Instead it is best practice to “publish” and “subscribe” to the data you want available. In your terminal: <code>meteor remove insecure</code>. To add packages (like twitter bootstrap or authentication) use <code>meteor add &lt;packageName&gt;</code></p>
+<p>We publish on the server:<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Meteor.publish(<span class="string">'PlayersList'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></span><br><span class="line">	<span class="keyword">return</span> PlayersList.<span class="built_in">find</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>and subscribe on the client for the template where we want to render the data:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Meteor.subscribe(<span class="string">'PlayersList'</span>);</span><br></pre></td></tr></table></figure>
+<h6 id="more_code">more code</h6><p>I define some players list events for upvoting. Events call server side methods here:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Template.players_list.events(&#123;</span><br><span class="line">  <span class="string">'click .increment'</span>: <span class="function"><span class="keyword">function</span><span class="params">(e, tmpl)</span></span>&#123;</span><br><span class="line">    Meteor.call(<span class="string">"update_player_score"</span>, <span class="keyword">this</span>._id, <span class="number">5</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'click .decrement'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Meteor.call(<span class="string">"update_player_score"</span>, <span class="keyword">this</span>._id, -<span class="number">5</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'click .remove'</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Meteor.call(<span class="string">'remove_player'</span>, <span class="keyword">this</span>._id);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>this</code> refrences the data context (so the current player in the each loop)</p>
+<p>Those methods make mongodb calls. The code is in our server directory and therefore hidden from the client:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'remove_player'</span>: <span class="keyword">function</span>(player_id)&#123;</span><br><span class="line">	PlayersList.remove(player_id);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">'update_player_score'</span>: <span class="keyword">function</span>(player_id, toAdd)&#123;</span><br><span class="line">	PlayersList.update(&#123;_id: player_id&#125;, &#123;<span class="variable">$inc</span>: &#123;score: toAdd&#125; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="That’s_it">That’s it</h6><p>Check out the <a href="https://github.com/jasonshark/leaderboard" target="_blank" rel="external">source code</a> and the <a href="http://jasonshark-leaderboard.meteor.com/" target="_blank" rel="external">live demo</a>. Deploy your app with <code>meteor deploy &lt;my-app-name&gt;.meteor.com</code></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Meteor/">Meteor</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Intro-to-angular-ui-router/"  data-tooltip="Intro to angular-ui-router">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/ES6-arrow-functions-and-this/" data-tooltip="ES6 arrow functions and this">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Intro-to-angular-ui-router/"  data-tooltip="Intro to angular-ui-router">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/ES6-arrow-functions-and-this/" data-tooltip="ES6 arrow functions and this">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/How-to-build-an-app-using-Meteor-js/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

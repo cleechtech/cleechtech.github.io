@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Some basics about Stellar and cryptocurrency - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="Learn you cryptocurrency. Stellar is a new network protocol shaking up the scene">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Some basics about Stellar and cryptocurrency">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="Learn you cryptocurrency. Stellar is a new network protocol shaking up the scene">
+<meta property="og:image" content="http://media.giphy.com/media/HIqV5khg6gyqc/giphy.gif">
+<meta property="og:updated_time" content="2015-11-29T19:34:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Some basics about Stellar and cryptocurrency">
+<meta name="twitter:description" content="Learn you cryptocurrency. Stellar is a new network protocol shaking up the scene">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Some basics about Stellar and cryptocurrency
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Oct 22 2015 18:02:16 GMT-0700">
+	
+		    Oct 22, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Learn you cryptocurrency. Stellar is a new network protocol shaking up the scene<br><a id="more"></a></p>
+<p><a href="https://www.stellar.org/" target="_blank" rel="external">Stellar</a> is a new protocol that makes it easy to send money between any two currencies quickly. The system aims to bring the world together by increasing interoperability between diverse financial systems and currencies. Parties can exchange using their own defined currencies, currencies that exist already or use the Stellar intermediary currency to perform trades. Stellar is a cryptocurrency and a protocol. The system is managed by a non-profit company based in San Francisco. Stellar is a peer to peer protocol that enables money to move as easily as email. </p>
+<p>I am new to cryptocurrency and have no bitcoin. I signed up with Facebook and recieved free stellars out of interest on the topic. I learned about the Stellar protocol through a post on the <a href="http://blog.praekeltfoundation.org/" target="_blank" rel="external">Praekelt Foundation’s blog</a>.</p>
+<p>There they say</p>
+<blockquote>
+<p>More recently, with the use of Stellar’s open-source protocol, Praekelt is working on a mobile wallet that allows people to save cash or airtime using Vumi, their messaging platform—think Whatsapp, but open source and designed for the developing world, with a focus on improving the economic security of girls in South Africa.</p>
+</blockquote>
+<p>The Praekelt Foundation is a South African company that builds awesome services out of Python and Javascript for the developing world. They also partnered with Facebook et al’s <a href="https://internet.org/" target="_blank" rel="external">internet.org</a> initiative to bring internet services and connectivity to the rest of the planet. They made a way for Indian’s to <a href="http://blog.praekeltfoundation.org/post/65981723628/wikipedia-zero-over-text-with-praekelt-foundation" target="_blank" rel="external">access Wikipedia without internet</a>. And also made election monitoring software for Libya and ran a successful Guiness advertising campaign in Nigeria. Their <a href="http://vumi.org/case-studies/" target="_blank" rel="external">Vumi platform</a> makes it possible to connect acoss modern channels to people that use crappy phones only capable of SMS and USSD messaging. They are very clever so when I saw they were using Stellar I began to pay attention.</p>
+<p>There are three things that make the <a href="https://medium.com/a-stellar-journey/on-worldwide-consensus-359e9eb3e949" target="_blank" rel="external">Stellar Consensus Protocol (SCP)</a> unique. There is no gatekeeper, there is a low barrier to get started in the network and the system is robust in the face of failure. These properties are called decentralized control, low latency, flexible trust, and asymptotic security. A professor at Stanford, who now works for Stellar, wrote a white paper on the topic <a href="https://www.stellar.org/papers/stellar-consensus-protocol.pdf" target="_blank" rel="external">here</a>. The gist is that nodes in the network trust other nodes and through this network of trust transactions happen. There is no proof of work model or mining like in the bitcoin system. The stellar protocol, like other cryptocurrencies is <a href="https://github.com/stellar/" target="_blank" rel="external">open source</a>.</p>
+<p>Stellar solves a problem in computer science called the Byzantine Generals problem. I pretty much quoted that from <a href="http://dealbook.nytimes.com/2014/01/21/why-bitcoin-matters/?_r=0" target="_blank" rel="external">Marc Andreesen’s NYTimes bitcoin post</a> though stellar faces the same issue. The issue is how to know when a transaction is valid when people are trying to scam you all over the place and the network ie the internet is mad insecure.</p>
+<p>Bitcoin solves this problem through a system called “proof of work” to ensure valid transactions occur. In the bitcoin system capitalists operate powerful machines called bitcoin miners that perform algorithmic calculations and difficult math problems to update the bitcoin blockchain, which acts as a ledger of all past transactions. After a couple of hours or more of computationally intensive work the blockchain gets updated with a permanent transaction history of everything that occured on the bitcoin network. The owners of the bitcoin miners make a profit, in bitcoin. The world’s supply of bitcoin is fixed. To exchange bitcoin for “normal people money”TM one must use a bitcoin exchange. Some of these exchanges are quite shady. For example, Mt. Gox, a popular bitcoin exchange conveniently misplaced, lost, or was robbed of millions of dollars worth of bitcoin. Other bitcoin exchanges, like Coinbase, are entirely legitimate.</p>
+<p>Stellar is more of a protocol than a curency. You can use Stellar to exchange dollars for bitcoins or bitcoin for yen. You could also use the stellar protocol to exchange yen for dollars or vice versa. The idea behind stellar is to use it in the background. Email and the internet use all sorts of protocols. Most people that use the internet and email know nothing about the underlying technology.</p>
+<p>Stellar, like bitcoin, operates a decentralized network, there is a ledger of historical transactions and both systems have their own currencies. However, the stellar system works entirely differnetly than the bitcoin system. The stellar network is built on trust between members of the network. Anyone can join the stellar network and choose who to trust. Many independent servers participate in the stellar network, so the network can survive even if it loses one or many of its network nodes. The network will still succeed even if some servers fail.</p>
+<p>There is no way to mine stellar. The stellar network is made of stellar nodes. Participants in the system choose who to trust on the network. The people you choose to trust on the network are called a quorum slice. A quorum slice can convice one node that a transaction is valid. SCP takes a ballot-based approach to the problem. Quorum slices overlap to create a quorum. A quorum convinces the whole network that a transaction is valid. A quorum is comprised of overlapping quorum slices. Overlapping quorum are called quorum intersections. Once a quorum is reached and the network is in agreement, the ledger on every node in the network is updated. The transaction occurs. The whole process of agreement between all nodes in the network only takes between two and five seconds. The stellar protocol is powerful in that trades can happen between parties who don’t trust each other. The SCP network reaches consensus when all nodes update their ledgers and externalize the same values.</p>
+<p>There is a lot of things about the protocol I do not understand but I think it is cool and will keep my eye on this technology moving forward.</p>
+<h4 id="Resources">Resources</h4><p>To use the Stellar API, <a href="http://gdb.svbtle.com/the-stellar-domain-model" target="_blank" rel="external">this</a> is a good conceptual introduction for programmers.</p>
+<p>Stellar has <a href="https://www.stellar.org/developers/" target="_blank" rel="external">learning resources here</a></p>
+<p>There is the <a href="https://www.stellar.org/papers/stellar-consensus-protocol.pdf" target="_blank" rel="external">academic white paper</a> and <a href="https://medium.com/a-stellar-journey/on-worldwide-consensus-359e9eb3e949" target="_blank" rel="external">summary of that white paper</a></p>
+<p>There is also a post about Stellar.. <a href="http://www.kalzumeus.com/2014/08/05/harry-potter-and-the-cryptocurrency-of-stars/" target="_blank" rel="external">for Harry Potter fans</a></p>
+<p><img src="http://media.giphy.com/media/HIqV5khg6gyqc/giphy.gif" alt=""></p>
+<p>Stellar also has a <a href="http://slack.stellar.org/" target="_blank" rel="external">public slack channel</a> for answering questions and collaborating.</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Currency/">Currency</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/22/thoughts-on-angular-todo-list/"  data-tooltip="thoughts on angular todo list">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/20/On-Insurrection/" data-tooltip="On Insurrection">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/22/thoughts-on-angular-todo-list/"  data-tooltip="thoughts on angular todo list">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/20/On-Insurrection/" data-tooltip="On Insurrection">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/22/Some-basics-about-Stellar-and-cryptocurrency/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

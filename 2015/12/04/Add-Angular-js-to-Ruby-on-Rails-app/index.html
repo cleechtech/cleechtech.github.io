@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Part 2 - Add Angular.js to Ruby on Rails app - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="In my last ROR post we set up a Rails app that displays a list from the database. Here is the SOURCE CODE. (Give it a star on github!)
+In this post we will add angular to the task list.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Part 2 - Add Angular.js to Ruby on Rails app">
+<meta property="og:url" content="http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="In my last ROR post we set up a Rails app that displays a list from the database. Here is the SOURCE CODE. (Give it a star on github!)
+In this post we will add angular to the task list.">
+<meta property="og:image" content="http://spr.com/wp-content/uploads/2015/08/RailsAngularBanner1.png">
+<meta property="og:updated_time" content="2015-12-14T22:26:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Part 2 - Add Angular.js to Ruby on Rails app">
+<meta name="twitter:description" content="In my last ROR post we set up a Rails app that displays a list from the database. Here is the SOURCE CODE. (Give it a star on github!)
+In this post we will add angular to the task list.">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Part 2 - Add Angular.js to Ruby on Rails app
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Fri Dec 04 2015 15:34:04 GMT-0800">
+	
+		    Dec 04, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p><img src="http://spr.com/wp-content/uploads/2015/08/RailsAngularBanner1.png" alt="Image from SPR Consulting"></p>
+<p>In my <a href="https://medium.com/@jasonshark/ruby-on-rails-introduction-for-the-total-n00b-fdc1a7f6567e#.bfte8gwl7" target="_blank" rel="external">last ROR post</a> we set up a Rails app that displays a list from the database. Here is the <a href="https://github.com/cleechtech/rails-task-list" target="_blank" rel="external">SOURCE CODE</a>. (Give it a star on github!)</p>
+<p>In this post we will add angular to the task list.<br><a id="more"></a></p>
+<h2 id="Disable_turbolinks">Disable turbolinks</h2><p>Turbolinks is a feature new to Rails 4. It uses pushState to change the address of the current page, meaning scripts do not have to be reloaded. Angular already does some of this magic, though it is <a href="http://stackoverflow.com/questions/14797935/using-angularjs-with-turbolinks" target="_blank" rel="external">possible</a> to use angular and turbolinks together. For this app we’re going to stick with only angular, no turbolinks.</p>
+<p>Remove <code>//= require turbolinks</code> from <strong>app/assets/javascripts/application.js</strong>.</p>
+<p>Next remove <code>“data-turbolinks-track” =&gt; true</code> from <strong>app/views/layouts/application.html.erb</strong>.</p>
+<p>You can also remove <code>gem ‘turbolinks’</code> from the <strong>Gemfile</strong>.</p>
+<h2 id="Add_bower">Add bower</h2><p>You could download libraries directly and drop them into <strong>vendor/assets/javascripts/</strong> but instead we’re going to use bower to do this for us. Create a file in the root called <code>.bowerrc</code> (run <code>$ touch .bowerrc</code> from the command line) and install client side dependencies (meaning angular and ui-router).</p>
+<p><strong>.bowerrc</strong> file looks like:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">directory</span>": <span class="value"><span class="string">"vendor/assets/components"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>Use tabs to spaces in the .bowerrc file. Install dependencies with:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">bower </span>init &amp;&amp; <span class="keyword">bower </span>i angular angular-ui-router --save</span><br></pre></td></tr></table></figure>
+<p>This creates the bower.json file and installs angular and angular-ui-router.</p>
+<p>Next we need to tell the rails asset pipeline to load in what bower added to <strong>vendor/assets/components</strong>. Go to <strong>config/application.rb</strong> and add this line:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config<span class="class">.assets</span><span class="class">.paths</span> &lt;&lt; Rails<span class="class">.root</span><span class="class">.join</span>(‘vendor’, ‘assets’, ‘components’)</span><br></pre></td></tr></table></figure>
+<p>When rails loads in our javascripts and stylesheets it will also know to load in from the “components” folder.</p>
+<p>Next tell the application which <em>specific files</em> we want to load from the components directory. Update <strong>app/assets/javascripts/application.js</strong>:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//= require jquery</span></span><br><span class="line"><span class="comment">//= require jquery_ujs</span></span><br><span class="line"><span class="comment">//= require angular/angular</span></span><br><span class="line"><span class="comment">//= require angular-ui-router/release/angular-ui-router</span></span><br></pre></td></tr></table></figure>
+<p>Remove the <code>//= require_tree .</code> line. If we have that it will ignore the folder structure we set up later. The order our files loads in matter so get rid of it!</p>
+<p>Start the rails server and open up the console. Type “angular” and press enter. We’ve used bower to load client libraries into Rails.</p>
+<h2 id="Create_an_Angular_application">Create an Angular application</h2><p>Okay so we’ve configured rails to load in the libraries, now we need to make our angular app and have that load in properly.</p>
+<p>First attach a module to <strong>app/views/layouts/application.html.erb</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">ng-app</span>=<span class="value">’rails-task-list’</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Next make a folder for controllers and factories in <strong>app/assets/javascripts</strong></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir app<span class="regexp">/assets/</span>javascripts<span class="regexp">/controllers app/</span>assets<span class="regexp">/javascripts/</span>factories</span><br></pre></td></tr></table></figure>
+<p>Tell the asset pipeline about these new directories, add to <strong>config/application.rb</strong>:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config<span class="class">.assets</span><span class="class">.paths</span> &lt;&lt; Rails<span class="class">.root</span><span class="class">.join</span>(‘app’, ‘javascripts’, ‘controllers’)</span><br><span class="line"> config<span class="class">.assets</span><span class="class">.paths</span> &lt;&lt; Rails<span class="class">.root</span><span class="class">.join</span>(‘app’, ‘javascripts’, ‘factories’)</span><br></pre></td></tr></table></figure>
+<p>Then in <strong>app/assets/javascripts/application.js</strong> instantiate the angular module.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//= require jquery</span></span><br><span class="line"><span class="comment">//= require jquery_ujs</span></span><br><span class="line"><span class="comment">//= require angular/angular</span></span><br><span class="line"><span class="comment">//= require angular-ui-router/release/angular-ui-router</span></span><br><span class="line"><span class="comment">//= require_self</span></span><br><span class="line"><span class="comment">//= require controllers/task</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="keyword">app</span> = angular.module(‘rails-task-<span class="keyword">list</span>’, [</span><br><span class="line"> ‘ui.router’</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>Create a TaskCtrl in <strong>app/assets/javascripts/controllers/task.js</strong>:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.controller(‘TaskCtrl’, [</span><br><span class="line"> ‘<span class="variable">$scope</span>’,</span><br><span class="line"> <span class="keyword">function</span>(<span class="variable">$scope</span>)&#123;</span><br><span class="line">     <span class="variable">$scope</span>.message = ‘I come from the angular controller!’;</span><br><span class="line"> &#125;]);</span><br></pre></td></tr></table></figure>
+<p>And finally update the task view in <strong>app/views/task/index.html.erb</strong>:</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">’container’</span> <span class="attribute">ng-controller</span>=<span class="value">’TaskCtrl’</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">’row</span> <span class="attribute">text-center</span>’&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Tasks<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="title">pre</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="title">pre</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">’list-group’</span>&gt;</span></span><br><span class="line"> </span>&lt;%<span class="ruby"> <span class="variable">@tasks</span>.each <span class="keyword">do</span> |task| </span>%&gt;<span class="xml"></span><br><span class="line"> <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">’list-group-item’</span>&gt;</span></span>&lt;%=<span class="ruby"> task.title </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"> </span>&lt;%<span class="ruby"> <span class="keyword">end</span> </span>%&gt;<span class="xml"></span><br><span class="line"> <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>If you are not following along, make sure you created the Rails task controller like in the <a href="https://medium.com/@jasonshark/ruby-on-rails-introduction-for-the-total-n00b-fdc1a7f6567e#.bfte8gwl7" target="_blank" rel="external">last post</a>. In upcoming posts we will use ui-router with Ruby On Rails.</p>
+<p>Source code: <a href="https://github.com/cleechtech/rails-task-list" target="_blank" rel="external">https://github.com/cleechtech/rails-task-list</a></p>
+<p>Ask me questions or give feedback via comments or <a href="https://twitter.com/realjasonshark" target="_blank" rel="external">on twitter</a>!</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Angular/">Angular</a> <a class="tag tag--primary tag--small t-link" href="/tags/Ruby/">Ruby</a> <a class="tag tag--primary tag--small t-link" href="/tags/Ruby-On-Rails/">Ruby On Rails</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/14/Add-angular-ui-router-to-a-Ruby-On-Rails-app/"  data-tooltip="Part 3 - Add angular-ui-router to a Ruby On Rails app">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/02/Ruby-On-Rails-—-Introduction-for-the-total-n00b/" data-tooltip="Part 1 - Ruby On Rails for the MEAN stack developer">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/14/Add-angular-ui-router-to-a-Ruby-On-Rails-app/"  data-tooltip="Part 3 - Add angular-ui-router to a Ruby On Rails app">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/02/Ruby-On-Rails-—-Introduction-for-the-total-n00b/" data-tooltip="Part 1 - Ruby On Rails for the MEAN stack developer">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/12/04/Add-Angular-js-to-Ruby-on-Rails-app/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

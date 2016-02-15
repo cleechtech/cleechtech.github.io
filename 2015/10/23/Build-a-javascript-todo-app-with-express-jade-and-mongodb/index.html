@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Build a javascript todo app with express, jade and mongodb - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="Hey everyone today we’re going to build a super simple todo application using express 4. Express is a lightweight server side framework for node.js. It’s very popular but not quite as easy to get up a">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Build a javascript todo app with express, jade and mongodb">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="Hey everyone today we’re going to build a super simple todo application using express 4. Express is a lightweight server side framework for node.js. It’s very popular but not quite as easy to get up a">
+<meta property="og:updated_time" content="2015-11-29T19:29:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Build a javascript todo app with express, jade and mongodb">
+<meta name="twitter:description" content="Hey everyone today we’re going to build a super simple todo application using express 4. Express is a lightweight server side framework for node.js. It’s very popular but not quite as easy to get up a">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Build a javascript todo app with express, jade and mongodb
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Fri Oct 23 2015 16:51:28 GMT-0700">
+	
+		    Oct 23, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Hey everyone today we’re going to build a super simple todo application using <a href="http://expressjs.com/4x/api.html" target="_blank" rel="external">express 4</a>. Express is a lightweight server side framework for node.js. It’s very popular but not quite as easy to get up and running with a database as something like Rails or Django.</p>
+<p>In this tutorial we’ll connect an express server to a mongoDB database and serve our html using the jade templating engine. To make talking to MongoDB easier we will use the <a href="https://github.com/learnboost/mongoose" target="_blank" rel="external">mongoose</a> npm package. Even though mongodb is a schemaless database (everything is json) mongoose lets us define models and easily chain queries.</p>
+<a id="more"></a>
+<p><a href="https://github.com/jasonshark/express-todo" target="_blank" rel="external">SOURCE CODE</a> is on github here</p>
+<p><a href="http://express-mongo-jade-todo.herokuapp.com" target="_blank" rel="external">LIVE DEMO</a> hosted by heroku is here</p>
+<h3 id="Set_up_the_project">Set up the project</h3><p>Unlike Ruby On Rails, express allows you to set up your file structure any way you want. This was confusing to me when looking at other people’s code because I wasn’t sure what the best way to organize my project was. Here’s the directory structure I’m going to use today:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">express-todo</span><br><span class="line">  <span class="string">|- config</span></span><br><span class="line">  <span class="string">|- public</span></span><br><span class="line">    <span class="string">|- javascripts</span></span><br><span class="line">    <span class="string">|- stylesheets</span></span><br><span class="line">    <span class="string">|- images</span></span><br><span class="line">  <span class="string">|- routes</span></span><br><span class="line">  <span class="string">|- views</span></span><br><span class="line">  .gitignore</span><br><span class="line">  package.json</span><br><span class="line">  server.js</span><br><span class="line">  README.md</span><br></pre></td></tr></table></figure>
+<p><strong>public -</strong> this folder will hold files that everyone can see when they visit our page with a web browser. Here’s where we’ll put client side javascript and css.</p>
+<p><strong>config -</strong> here we’re going to have everything to do with configuring our environments and managing our database</p>
+<p><strong>routes -</strong> this is where we’ll have the server side application logic. If you’re coming from a rails background you might think of these as controllers</p>
+<p><strong>views -</strong> our jade templates live here</p>
+<p><strong>package.json -</strong> defines all packages (like express and mongoose) that our application depends on</p>
+<p><strong>server.js -</strong> this is the main executable file for everything. To run our app we’ll run <code>node server</code> or <code>node server.js</code> from the command line (terminal on mac). If something doesn’t work, start here.</p>
+<h3 id="Build_a_server">Build a server</h3><p>Okay so now let’s get coding! We’re going to start but running up our <strong>server.js</strong> file to listen for hits to a specific port on our computers. With this file we’ll run a local web server on our computer. Later we’ll deploy this as a real web server for the interwebs.<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="keyword">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="keyword">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> favicon = <span class="keyword">require</span>(<span class="string">'serve-favicon'</span>);</span><br><span class="line"><span class="keyword">var</span> logger = <span class="keyword">require</span>(<span class="string">'morgan'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="keyword">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="keyword">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> port = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// view engine setup</span></span><br><span class="line">app.set(<span class="string">'views'</span>, path.join(__dirname, <span class="string">'views'</span>));</span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'jade'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//app.use(favicon(__dirname + '/public/favicon.ico'));</span></span><br><span class="line">app.<span class="keyword">use</span>(logger(<span class="string">'dev'</span>));</span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.json());</span><br><span class="line">app.<span class="keyword">use</span>(bodyParser.urlencoded());</span><br><span class="line">app.<span class="keyword">use</span>(cookieParser());</span><br><span class="line"><span class="comment">// telling Express to serve static objects from /public </span></span><br><span class="line">app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(path.join(__dirname, <span class="string">'public'</span>)));</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start server</span></span><br><span class="line">app.listen(port, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">  console.log(<span class="string">'Server listening on port '</span> + port)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>First we tell express where to find our templates (ie the views directory) and then tell express to use jade as our template engine. <a href="https://www.npmjs.com/package/body-parser" target="_blank" rel="external">body-parser</a> is for handling form inputs. Cookies we won’t use but I included anyways. The next line tells express where to serve static assets from so all our server code isn’t visible to everybody.</p>
+<p>You can check this code works by running <code>node server</code> in the command line. You should get “Server is listening on port 3000”. Then check <code>localhost:3000</code> in your web browser and you’ll see an error</p>
+<p>“Cannot GET /“</p>
+<p>This is because we haven’t defined any routes.</p>
+<h3 id="Define_our_routes">Define our routes</h3><p>Routes are essentially urls for your website. So when you went to <code>localhost:3000</code> you visited the base root <code>/</code>. For our website we’ll want routes for viewing, creating and editing todos. So modify <strong>server.js</strong> after the express.static line and before app.listen.</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Routes</span></span><br><span class="line"><span class="keyword">var</span> main = <span class="keyword">require</span>(<span class="string">'./routes/main'</span>);</span><br><span class="line"><span class="keyword">var</span> todo = <span class="keyword">require</span>(<span class="string">'./routes/todo'</span>);</span><br><span class="line"><span class="keyword">var</span> todoRouter = express.Router();</span><br><span class="line">app.use(<span class="string">'/todos'</span>, todoRouter);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, main.<span class="keyword">index</span>);</span><br><span class="line">todoRouter.get(<span class="string">'/'</span>, todo.all);</span><br><span class="line">todoRouter.post(<span class="string">'/create'</span>, todo.<span class="keyword">create</span>);</span><br><span class="line">todoRouter.post(<span class="string">'/destroy/:id'</span>, todo.destroy);</span><br><span class="line">todoRouter.post(<span class="string">'/edit/:id'</span>, todo.edit);</span><br></pre></td></tr></table></figure>
+<p>Also create two files, <strong>main.js</strong> and <strong>todo.js</strong> in the routes folder. Before jumping in to those files let’s look at the new express routes we defined. The user can visit our homepage <code>/</code>, they’ll be able to see all todos at <code>/todos</code>, create todos by sending a post request to <code>/todos/create</code> and delete todos by sending a delete request to <code>/todos/destroy/:id</code>. <code>:id</code> is will be the unique database id provided to us by mongodb. Finally they’ll be able to update todos by sending a put request to <code>/todos/edit/:id</code> and view individual todos at <code>/todos/:id</code>.</p>
+<p>Each of these scenarios will be handled with a function that takes two parameters – request and response.</p>
+<p>Define the todo handler functions in <strong>routes/todo.js</strong> with some empty content for now:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    all: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">        res.send(<span class="string">'All todos'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    viewOne: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Viewing '</span> + req.params.id);</span><br><span class="line">    &#125;,</span><br><span class="line">    create: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Todo created'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    destroy: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Todo deleted'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    edit: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Todo '</span> + req.params.id + <span class="string">' updated'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>So in this file we have an object with keys and handler functions as values. <code>module.exports</code> makes the object in this file usable in our server.js file. <code>req.params.id</code> takes the value directly from the url bar. Try visiting <code>localhost:3000/todos/blahblahblah</code> in your web browser. The console.log messages will log out in your terminal and you will see “Viewing blahblahblah”.</p>
+<h3 id="Getting_jaded">Getting jaded</h3><p>Let’s get the homepage setup. In our server.js <code>app.get(&#39;/&#39;, main.index);</code> this line handles our homepage. Define the controller function in routes/main.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	index: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">		res.render(<span class="string">'main'</span>, &#123; title: <span class="string">'Express Todo'</span> &#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>res.render</code> renders a view. We already told express our views are in the <code>views</code> folder and that we’re using jade templating. Create a file <strong>main.jade</strong>:<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">extends layout</span><br><span class="line"></span><br><span class="line">block content</span><br><span class="line">	h1= title</span><br><span class="line">	p Welcome <span class="built_in">to</span> <span class="comment">#&#123;title&#125;</span></span><br><span class="line">    <span class="operator">a</span>(href=<span class="string">'/todos'</span>).btn.btn-success.btn-lg View all todos</span><br></pre></td></tr></table></figure></p>
+<p>And also create a <strong>layout.jade</strong> in the views folder:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">doctype <span class="tag">html</span></span><br><span class="line"><span class="tag">html</span></span><br><span class="line">	title Express Todo</span><br><span class="line">    <span class="function"><span class="title">link</span><span class="params">(rel=<span class="string">"stylesheet"</span>, href=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"</span>)</span></span></span><br><span class="line">	<span class="function"><span class="title">link</span><span class="params">(rel=<span class="string">"stylesheet"</span>, href=<span class="string">"/stylesheets/main.css"</span>)</span></span></span><br><span class="line"><span class="tag">body</span></span><br><span class="line">	block <span class="attribute">content</span></span><br></pre></td></tr></table></figure></p>
+<p>Here we include twitter bootstrap cdn link for styling. Click the big green button and you’ll navigate to <code>/todos</code>. Be careful not to mix tabs and spaces in your jade code. You have to use one or the other or Mrs. Jade becomes angry</p>
+<h3 id="Add_MongoDB">Add MongoDB</h3><p>Now that we have our server up and serving up content, let’s connect it to a local database. First add mongoose as a dependency. So from the terminal:</p>
+<p><code>$ npm install mongoose --save</code></p>
+<p>Also check that you have mongodb installed with <code>$ mongo --version</code>. Open a brand new terminal and run </p>
+<p><code>$ mongod</code></p>
+<p>This wakes MongoDB up and allows it to operate. In order to connect to a local mongodb database, mongod must be running.</p>
+<p>In another terminal window enter <code>$ mongo</code> we’re going to create a local mongodb database:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mongo</span><br><span class="line">MongoDB shell version: <span class="number">2.6</span><span class="number">.4</span></span><br><span class="line">connecting to: test</span><br><span class="line">Server has startup warnings: </span><br><span class="line"><span class="number">2014</span>-<span class="number">12</span>-<span class="number">24</span>T10:<span class="number">30</span>:<span class="number">36.556</span>-<span class="number">0800</span> [initandlisten] </span><br><span class="line"><span class="number">2014</span>-<span class="number">12</span>-<span class="number">24</span>T10:<span class="number">30</span>:<span class="number">36.556</span>-<span class="number">0800</span> [initandlisten] ** WARNING: soft rlimits too low. Number of files is <span class="number">256</span>, should be at least <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+<p>In this REPL type <code>use express-todo</code> to create our local database. To see all the databases you have type <code>show dbs</code>. To quit the mongo terminal press Ctrl + C</p>
+<h4 id="Define_data_model_and_connect">Define data model and connect</h4><p>Even though mongodb is schemaless, to model our data with mongoose we still need to define models. Create a new folder inside config called <strong>models</strong> and add a new file called <strong>Todo.js</strong>. We’ll then define what our todo data will look like with a schema:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>),</span><br><span class="line">	Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="comment">// todo model</span></span><br><span class="line"><span class="keyword">var</span> todoSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    content: <span class="built_in">String</span>,</span><br><span class="line">    completed: &#123; <span class="keyword">type</span>: <span class="built_in">Boolean</span>, <span class="keyword">default</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">    updated_at: &#123; <span class="keyword">type</span>: <span class="built_in">Date</span>, <span class="keyword">default</span>: <span class="built_in">Date</span>.now &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mongoose.model(<span class="string">'Todo'</span>, todoSchema);</span><br></pre></td></tr></table></figure>
+<p>Next in <strong>server.js</strong> add this code above the code for the routes:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'./config/models/Todo'</span>);</span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost/express-todo'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'connected to database!'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>This registers our todo schema and connects to the local mongodb database.</p>
+<h3 id="Show_Todos">Show Todos</h3><p>Even though our database is empty let’s query it. Update the code in <code>routes/todo.js</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>),</span><br><span class="line">    Todo = mongoose.model(<span class="string">'Todo'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    all: <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">        Todo.find(&#123;&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, todos</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err) res.send(err);</span><br><span class="line">            res.json(todos);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Here we include the Todo model we registered earlier, query it for all entries (the first parameter is optional here) and then respond with JSON to the web page.</p>
+<p>If you visit <code>localhost:3000/todos</code> you should see an empty array on the page</p>
+<h3 id="Creating_todos">Creating todos</h3><p>Create a view file called <strong>todos.jade</strong> that we’ll display all the todos on.</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">extends layout</span><br><span class="line"></span><br><span class="line"><span class="keyword">block</span> content</span><br><span class="line">	h1.text-center All Todos</span><br><span class="line">	ul</span><br><span class="line">		<span class="keyword">for</span> todo <span class="keyword">in</span> todos</span><br><span class="line">			li #<span class="comment">&#123;todo.content&#125;</span></span><br><span class="line">	form(<span class="function"><span class="keyword">method</span>='<span class="title">post</span>', <span class="title">action</span>='/<span class="title">todos</span>/<span class="title">create</span>')</span><br><span class="line">		.<span class="title">input</span>-<span class="title">group</span></span><br><span class="line">			<span class="title">input</span>.<span class="title">form</span>-<span class="title">control</span><span class="params">(<span class="keyword">type</span>=<span class="string">'text'</span>, placeholder=<span class="string">'What do you have to do?'</span>, name=<span class="string">'content'</span>)</span></span><br><span class="line">			<span class="title">span</span>.<span class="title">input</span>-<span class="title">group</span>-<span class="title">btn</span></span><br><span class="line">				<span class="title">input</span>.<span class="title">btn</span>.<span class="title">btn</span>-<span class="title">success</span><span class="params">(<span class="keyword">type</span>=<span class="string">'submit'</span>, value=<span class="string">'Add Todo'</span>)</span></span></span><br></pre></td></tr></table></figure>
+<p>Here we have an unordered list to display the todos and a form that hits our server with a post request to add one.</p>
+<p>Let’s define that route that the form hits. Open <code>routes/todo.js</code>. Here is the code for creating a todo and then reloading the page.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">create: <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> todoContent = req.body.content;</span><br><span class="line">    <span class="comment">// create todo</span></span><br><span class="line">    Todo.create(&#123; content: todoContent &#125;, <span class="function"><span class="keyword">function</span><span class="params">(err, todo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) res.render(<span class="string">'error'</span>, &#123; error: <span class="string">'Error creating your todo :('</span>&#125;)</span><br><span class="line">        <span class="comment">// reload collection</span></span><br><span class="line">        res.redirect(<span class="string">'/todos'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Congrats! You now have a javascript server that can talk to a database and render the information in a web browser</p>
+<h3 id="Deleting_todos">Deleting todos</h3><p>First update <strong>todos.jade</strong></p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">block</span> content</span><br><span class="line">	h1.text-center All Todos</span><br><span class="line">	.panel.panel-<span class="keyword">default</span></span><br><span class="line">		<span class="keyword">for</span> todo <span class="keyword">in</span> todos</span><br><span class="line">			.panel-body</span><br><span class="line">				a(href=<span class="string">'/todos/#&#123;todo._id&#125;'</span>) #<span class="comment">&#123;todo.content&#125;</span></span><br><span class="line">				form(action=<span class="string">'/todos/destroy/#&#123;todo._id&#125;'</span>, <span class="function"><span class="keyword">method</span>='<span class="title">post</span>')</span><br><span class="line">					<span class="title">input</span>.<span class="title">btn</span>.<span class="title">btn</span>-<span class="title">danger</span>.<span class="title">pull</span>-<span class="title">right</span><span class="params">(<span class="keyword">type</span>=<span class="string">'submit'</span>, value=<span class="string">'Delete'</span>)</span></span></span><br></pre></td></tr></table></figure>
+<p>For this we submit a form when pressing the button. The styling is not perfect but you can mess with that however you like.</p>
+<p>Here’s the code to delete a todo and reload the page:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">destroy: <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> id = req.params.id;</span><br><span class="line"></span><br><span class="line">    Todo.findByIdAndRemove(id, <span class="function"><span class="keyword">function</span><span class="params">(err, todo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) res.render(<span class="string">'error'</span>, &#123; error: <span class="string">'Error deleting todo'</span>&#125;);</span><br><span class="line">        res.redirect(<span class="string">'/todos'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="View_and_update_todos">View and update todos</h3><p>I’d like for each todo to have its own page and be able to edit the todo on that page. Create a <strong>todo.jade</strong> file in the views directory:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">extends layout</span><br><span class="line"></span><br><span class="line">block <span class="attribute">content</span></span><br><span class="line">	<span class="function"><span class="title">form</span><span class="params">(method=<span class="string">'post'</span>, action=<span class="string">'/todos/edit/#&#123;todo._id&#125;'</span>)</span></span></span><br><span class="line">		<span class="tag">h1</span></span><br><span class="line">			<span class="function"><span class="title">input</span><span class="params">(value=<span class="string">'#&#123;todo.content&#125;'</span>, name=<span class="string">'content'</span>)</span></span></span><br><span class="line">			<span class="function"><span class="title">input</span><span class="params">(type=<span class="string">'submit'</span>, value=<span class="string">'Update'</span>)</span></span><span class="class">.btn</span><span class="class">.btn-primary</span><span class="class">.btn-lg</span></span><br><span class="line">			<span class="function"><span class="title">a</span><span class="params">(href=<span class="string">'/todos'</span>)</span></span><span class="class">.btn</span><span class="class">.btn-default</span><span class="class">.btn-lg</span> Back</span><br></pre></td></tr></table></figure>
+<p>This extends the layout again and has a form for updating and also a back button. Here are the methods for viewing the page and handling the update request. (We redirect them back to the full list after update is complete.)</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">viewOne: <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span>&#123;</span></span><br><span class="line">    Todo.<span class="built_in">find</span>(<span class="cell">&#123; _id: req.params.id &#125;</span>, <span class="function"><span class="keyword">function</span><span class="params">(err, todo)</span>&#123;</span></span><br><span class="line">        res.render(<span class="string">'todo'</span>, <span class="cell">&#123; todo: todo[<span class="number">0</span>] &#125;</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">edit: <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span>&#123;</span></span><br><span class="line">        Todo.findOneAndUpdate(<span class="cell">&#123; _id: req.params.id &#125;</span>, <span class="cell">&#123;content: req.body.content&#125;</span>, <span class="function"><span class="keyword">function</span><span class="params">(err, todo)</span>&#123;</span></span><br><span class="line">            res.redirect(<span class="string">'/todos'</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Now we have a page for showing all todos and also each todo has its own page with its own unique url. Also we can add, delete and update all of our todos.</p>
+<h3 id="Refactor">Refactor</h3><p>Our code thus far won’t work in production because we’re reading from a local database. Also the server.js file has a lot of stuff thrown in there and does not need to be that heavy. Let’s clean it up.</p>
+<p>New <strong>server.js</strong> file:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Environments</span></span><br><span class="line"><span class="keyword">var</span> env = process.env.NODE_ENV || <span class="string">'development'</span>;</span><br><span class="line"><span class="keyword">var</span> envConfig = <span class="built_in">require</span>(<span class="string">'./config/env'</span>)[env];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Express configuration</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./config/config'</span>)(app, envConfig);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Database</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./config/database'</span>)(envConfig)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Routes</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./config/routes'</span>)(app);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Start server</span></span><br><span class="line">app.listen(envConfig.port, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Server listening on port '</span> + envConfig.port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>So the first thing I did was create an <code>env.js</code> file in the config folder. That exports an object with a key for each environment (in our case production and development).</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> rootPath = path.normalize(__dirname + <span class="string">'/../'</span>); <span class="comment">// normalizes to base path</span></span><br><span class="line"></span><br><span class="line"><span class="module"><span class="keyword">module</span>.exports = </span>&#123;</span><br><span class="line">	development: &#123;</span><br><span class="line">		rootPath: rootPath,</span><br><span class="line">		database: <span class="string">'mongodb://localhost/express-todo'</span>,</span><br><span class="line">		port: process.env.PORT || <span class="number">3000</span></span><br><span class="line">	&#125;,</span><br><span class="line">	production: &#123;</span><br><span class="line">		rootPath: rootPath,</span><br><span class="line">		database: <span class="string">''</span>,</span><br><span class="line">		port: process.env.PORT || <span class="number">80</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Next up I moved the express config into a file called <code>config.js</code> in the config directory:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="keyword">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> logger = <span class="keyword">require</span>(<span class="string">'morgan'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="keyword">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="keyword">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="keyword">require</span>(<span class="string">'body-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> favicon = <span class="keyword">require</span>(<span class="string">'serve-favicon'</span>);</span><br><span class="line"></span><br><span class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(app, envConfig)</span></span>&#123;</span><br><span class="line">	<span class="comment">// view engine setup</span></span><br><span class="line">	app.set(<span class="string">'views'</span>, path.join(envConfig.rootPath, <span class="string">'views'</span>));</span><br><span class="line">	app.set(<span class="string">'view engine'</span>, <span class="string">'jade'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//app.use(favicon(envConfig.rootPath + '/public/favicon.ico'));</span></span><br><span class="line">	app.<span class="keyword">use</span>(logger(<span class="string">'dev'</span>));</span><br><span class="line">	app.<span class="keyword">use</span>(bodyParser.json());</span><br><span class="line">	app.<span class="keyword">use</span>(bodyParser.urlencoded());</span><br><span class="line">	app.<span class="keyword">use</span>(cookieParser());</span><br><span class="line">	<span class="comment">// telling Express to serve static objects from the /public/ dir, but make it seem like the top level</span></span><br><span class="line">	app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(path.join(envConfig.rootPath, <span class="string">'public'</span>)));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Then moved the database connection login into <code>database.js</code> in the config folder:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">envConfig</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// register models</span></span><br><span class="line">	<span class="built_in">require</span>(<span class="string">'./models/Todo'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// connect to database</span></span><br><span class="line">	mongoose.connect(envConfig.database, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'connected to database!'</span>)</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Then moved all the routes into <code>routes.js</code> also in the config folder:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = require(<span class="string">'express'</span>);</span><br><span class="line"></span><br><span class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(app)</span></span>&#123;</span><br><span class="line">	<span class="comment">// register route controllers</span></span><br><span class="line">	<span class="keyword">var</span> main = require(<span class="string">'../routes/main'</span>);</span><br><span class="line">	<span class="keyword">var</span> todo = require(<span class="string">'../routes/todo'</span>);</span><br><span class="line">	<span class="keyword">var</span> todoRouter = express.Router();</span><br><span class="line">	app.<span class="keyword">use</span>(<span class="string">'/todos'</span>, todoRouter);</span><br><span class="line"></span><br><span class="line">	app.<span class="keyword">get</span>(<span class="string">'/'</span>, main.index);</span><br><span class="line">	todoRouter.<span class="keyword">get</span>(<span class="string">'/'</span>, todo.all);</span><br><span class="line">	todoRouter.<span class="keyword">get</span>(<span class="string">'/:id'</span>, todo.viewOne);</span><br><span class="line">	todoRouter.post(<span class="string">'/create'</span>, todo.create);</span><br><span class="line">	todoRouter.post(<span class="string">'/destroy/:id'</span>, todo.destroy);</span><br><span class="line">	todoRouter.post(<span class="string">'/edit/:id'</span>, todo.edit);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Check that everything works locally. Also if anyone has tips for a more elegant way to manage environments in express apps let me know</p>
+<h3 id="Deploy_to_Heroku">Deploy to Heroku</h3><p>We’re going to use heroku and git for hosting and deploying our node.js app. First create a <code>.gitignore</code> file in the root and include node_modules:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/</span><br></pre></td></tr></table></figure>
+<p>This will ignore checking in npm stuff. Heroku will do that anyways. Next add a git file, create one and add your work.</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git init</span><br><span class="line"><span class="variable">$ </span>git add -<span class="constant">A</span></span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">'initial commit'</span></span><br></pre></td></tr></table></figure>
+<p>Next up we’re going to create a new application using heroku’s command line tool.<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>heroku create</span><br></pre></td></tr></table></figure></p>
+<p>This will give your app some nonsensical placeholder name. To change it follow this syntax:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>heroku <span class="symbol">apps:</span>rename newname</span><br></pre></td></tr></table></figure>
+<p>Next add a Procfile to your app. So in the root of your project (where server.js is) add a file named <code>Procfile</code>. In there write:</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web: <span class="keyword">node</span><span class="identifier"> </span><span class="title">server</span>.js</span><br></pre></td></tr></table></figure>
+<p>This declares that there’s a web process and to start it use the node server command. </p>
+<p>Next set the environment to “production”<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ heroku config:<span class="keyword">set</span> NODE_ENV=production</span><br></pre></td></tr></table></figure></p>
+<p>This will use the production config object we defined in <code>config/env.js</code>. Next we’re going to update the database key in that object. Head over to <a href="https://mongolab.com/" target="_blank" rel="external">MongoLab</a> and create a database. We’re going to connect to this database via a URI. There’s also a <a href="https://addons.heroku.com/mongolab" target="_blank" rel="external">heroku addon</a> you can use but it requires a credit card.</p>
+<p>Update the production config object so it looks similar to this:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">production</span>: &#123;</span><br><span class="line">		<span class="attribute">rootPath</span>: rootPath,</span><br><span class="line">		<span class="attribute">database</span>: <span class="string">'mongodb://jasonshark:multivision@ds037478.mongolab.com:37478/multivision'</span>,</span><br><span class="line">		<span class="attribute">port</span>: process.env.PORT || <span class="number">80</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally deploy the app to heroku:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">push </span>heroku master</span><br></pre></td></tr></table></figure>
+<p>Check out the <a href="http://express-mongo-jade-todo.herokuapp.com" target="_blank" rel="external">live demo</a> and <a href="https://github.com/jasonshark/express-todo" target="_blank" rel="external">source code</a></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Javascript/">Javascript</a> <a class="tag tag--primary tag--small t-link" href="/tags/MEAN/">MEAN</a> <a class="tag tag--primary tag--small t-link" href="/tags/MongoDB/">MongoDB</a> <a class="tag tag--primary tag--small t-link" href="/tags/Nodejs/">Nodejs</a> <a class="tag tag--primary tag--small t-link" href="/tags/Todo/">Todo</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Build-a-Soundboard/"  data-tooltip="Build a Soundboard">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/animate-angular-apps-with-ngFx/" data-tooltip="animate angular apps with ngFx">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/Build-a-Soundboard/"  data-tooltip="Build a Soundboard">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/23/animate-angular-apps-with-ngFx/" data-tooltip="animate angular apps with ngFx">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/23/Build-a-javascript-todo-app-with-express-jade-and-mongodb/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

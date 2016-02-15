@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Handle a git merge conflict - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="I’m starting to work with other people using git and github. Though I’m familiar with pushing, pulling, branching and cloning, I had not regularly encountered  merge conflicts until I began RocketU.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Handle a git merge conflict">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="I’m starting to work with other people using git and github. Though I’m familiar with pushing, pulling, branching and cloning, I had not regularly encountered  merge conflicts until I began RocketU.">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/04/Screen-Shot-2015-04-23-at-8-22-13-PM.png">
+<meta property="og:updated_time" content="2015-11-29T19:32:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Handle a git merge conflict">
+<meta name="twitter:description" content="I’m starting to work with other people using git and github. Though I’m familiar with pushing, pulling, branching and cloning, I had not regularly encountered  merge conflicts until I began RocketU.">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Handle a git merge conflict
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Tue Oct 20 2015 17:53:25 GMT-0700">
+	
+		    Oct 20, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>I’m starting to work with other people using git and github. Though I’m familiar with pushing, pulling, branching and cloning, I had not regularly encountered  merge conflicts until I began RocketU.</p>
+<a id="more"></a>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> mergeConflicting</span><br><span class="line"><span class="built_in">cd</span> mergeConflicting</span><br><span class="line">touch play.js</span><br></pre></td></tr></table></figure>
+<p>add some random code. This creates a gulp web server (after you run npm install):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">  connect = <span class="built_in">require</span>(<span class="string">'gulp-connect'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'webserver'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  connect.server(&#123;</span><br><span class="line">    livereload: <span class="literal">true</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'webserver'</span>]);</span><br></pre></td></tr></table></figure>
+<p>Then add the files to .git and commit the changes:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">'add gulp process'</span></span></span><br></pre></td></tr></table></figure>
+<p>All of this is standard. I’ve learned not to work on the master branch. So to create a new branch named develop and start working on it run:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="tag">b</span> develop</span><br></pre></td></tr></table></figure>
+<p>Now we’re on the develop branch and we’ll make some changes. We’ll make some changes to master. When we try to merge develop into master we will have a merge conflict that we will resolve.</p>
+<p>I added some more random tasks from the gulp API docs that changes lines 5 through 11.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">'add gulp task on develop branch'</span></span></span><br></pre></td></tr></table></figure></p>
+<p>Now I’ll go back to master, add some different code on the same lines and simulate a merge conflict.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p>Add some new stuff<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">'make changes on master branch'</span></span><br><span class="line">git <span class="keyword">status</span></span><br><span class="line"><span class="keyword">On</span> branch <span class="keyword">master</span></span><br><span class="line"><span class="keyword">nothing</span> <span class="keyword">to</span> <span class="keyword">commit</span>, working <span class="keyword">directory</span> clean</span></span><br></pre></td></tr></table></figure></p>
+<p>Cool, so everything is gravy on our respective branches. When I try to merge develop into master though we’ll get a conflict! Git does not know if it should display the file as I have it on master or as I have it on develop. We changed the same lines!</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git merge develop</span><br><span class="line"><span class="type">Auto</span>-merging play.js</span><br><span class="line"><span class="type">CONFLICT</span> (content): <span class="type">Merge</span> conflict <span class="keyword">in</span> play.js</span><br><span class="line"><span class="type">Automatic</span> merge failed; fix conflicts <span class="keyword">and</span> then commit the <span class="literal">result</span>.</span><br></pre></td></tr></table></figure>
+<p>So that’s fun. If you look at the file it is a bit scary because your code is all messy and jacked up. Git will display &lt;&lt;&lt;&lt;&lt; and &gt;&gt;&gt;&gt;&gt; denoting where the two branches conflict.</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">// random changes on master branch</span><br><span class="line">gulp.src(<span class="string">'./client/templates/*.jade'</span>)</span><br><span class="line">  .<span class="keyword">pipe</span>(jade())</span><br><span class="line">  .<span class="keyword">pipe</span>(gulp.dest(<span class="string">'./build/templates'</span>))</span><br><span class="line">  .<span class="keyword">pipe</span>(minify())</span><br><span class="line">  .<span class="keyword">pipe</span>(gulp.dest(<span class="string">'./build/minified_templates'</span>));</span><br><span class="line"></span><br><span class="line">=======</span><br><span class="line"></span><br><span class="line">gulp.src(<span class="string">'client/js/**/*.js'</span>) // Matches <span class="string">'client/js/somedir/somefile.js'</span> <span class="keyword">and</span> resolves <span class="string">`base`</span> to <span class="string">`client/js/`</span></span><br><span class="line">  .<span class="keyword">pipe</span>(minify())</span><br><span class="line">  .<span class="keyword">pipe</span>(gulp.dest(<span class="string">'build'</span>));  <span class="regexp">//</span> Writes <span class="string">'build/somedir/somefile.js'</span></span><br><span class="line"></span><br><span class="line">gulp.src(<span class="string">'client/js/**/*.js'</span>, &#123; base: <span class="string">'client'</span> &#125;)</span><br><span class="line">  .<span class="keyword">pipe</span>(minify())</span><br><span class="line">  .<span class="keyword">pipe</span>(gulp.dest(<span class="string">'build'</span>));  <span class="regexp">//</span> Writes <span class="string">'build/js/somedir/somefile.js'</span></span><br><span class="line">  </span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; develop</span><br></pre></td></tr></table></figure>
+<p>Until recently I would edit this file manually and commit my changes. Today we’ll use the git mergetool tool.</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git mergetool</span><br><span class="line"></span><br><span class="line">This message is displayed because <span class="string">'merge.tool'</span> is <span class="operator">not</span> configured.</span><br><span class="line">See <span class="string">'git mergetool --tool-help'</span> <span class="operator">or</span> <span class="string">'git help config'</span> <span class="keyword">for</span> more details.</span><br><span class="line"><span class="string">'git mergetool'</span> will now attempt <span class="built_in">to</span> use <span class="constant">one</span> <span class="operator">of</span> <span class="operator">the</span> following tools:</span><br><span class="line">opendiff tortoisemerge emerge vimdiff</span><br><span class="line">Merging:</span><br><span class="line">play.js</span><br><span class="line"></span><br><span class="line">Normal <span class="built_in">merge</span> conflict <span class="keyword">for</span> <span class="string">'play.js'</span>:</span><br><span class="line">  &#123;<span class="built_in">local</span>&#125;: modified <span class="built_in">file</span></span><br><span class="line">  &#123;remote&#125;: modified <span class="built_in">file</span></span><br><span class="line">Hit <span class="constant">return</span> <span class="built_in">to</span> <span class="built_in">start</span> <span class="built_in">merge</span> resolution tool (opendiff):</span><br></pre></td></tr></table></figure>
+<p>I use opendiff cause it gives you a GUI. Another tool is called vimdiff. I always get stuck in Vim and don’t like using it cause I’m afraid. Use opendiff. Hit enter.</p>
+<p><img src="/content/images/2015/04/Screen-Shot-2015-04-23-at-8-22-13-PM.png" alt=""></p>
+<p>Now you will see the two files and how they differ. Use the arrow keys to select left or right. I will select the right. Then save (File &gt; Save or command + S) then quit (File &gt; Quit or command + Q). Back in the terminal you’ll see some stuff.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">git mergetool</span><br><span class="line"></span><br><span class="line">This message is displayed because '<span class="operator"><span class="keyword">merge</span>.tool<span class="string">' is not configured.</span><br><span class="line">See '</span>git mergetool <span class="comment">--tool-help' or 'git help config' for more details.</span></span><br><span class="line"><span class="string">'git mergetool'</span> will <span class="keyword">now</span> attempt <span class="keyword">to</span> <span class="keyword">use</span> one <span class="keyword">of</span> the <span class="keyword">following</span> tools:</span><br><span class="line">opendiff tortoisemerge emerge vimdiff</span><br><span class="line">Merging:</span><br><span class="line">play.js</span><br><span class="line"></span><br><span class="line"><span class="keyword">Normal</span> <span class="keyword">merge</span> conflict <span class="keyword">for</span> <span class="string">'play.js'</span>:</span><br><span class="line">  &#123;<span class="keyword">local</span>&#125;: modified <span class="keyword">file</span></span><br><span class="line">  &#123;remote&#125;: modified <span class="keyword">file</span></span><br><span class="line">Hit <span class="keyword">return</span> <span class="keyword">to</span> <span class="keyword">start</span> <span class="keyword">merge</span> resolution tool (opendiff): </span><br><span class="line"><span class="number">2015</span>-<span class="number">04</span>-<span class="number">23</span> <span class="number">20</span>:<span class="number">21</span>:<span class="number">49.350</span> FileMerge[<span class="number">3018</span>:<span class="number">303</span>] Invalid color <span class="keyword">System</span>, labelColor (<span class="keyword">warning</span> given <span class="keyword">only</span> once)</span><br><span class="line"><span class="number">2015</span>-<span class="number">04</span>-<span class="number">23</span> <span class="number">20</span>:<span class="number">21</span>:<span class="number">49.516</span> FileMerge[<span class="number">3018</span>:<span class="number">303</span>] Unable <span class="keyword">to</span> <span class="keyword">load</span> platform <span class="keyword">at</span> <span class="keyword">path</span> /Applications/Xcode.app/<span class="keyword">Contents</span>/Developer/Platforms/iPhoneOS.platform</span><br><span class="line"><span class="number">2015</span>-<span class="number">04</span>-<span class="number">23</span> <span class="number">20</span>:<span class="number">21</span>:<span class="number">49.518</span> FileMerge[<span class="number">3018</span>:<span class="number">303</span>] Unable <span class="keyword">to</span> <span class="keyword">load</span> platform <span class="keyword">at</span> <span class="keyword">path</span> /Applications/Xcode.app/<span class="keyword">Contents</span>/Developer/Platforms/iPhoneSimulator.platform</span><br><span class="line"></span><br><span class="line">git <span class="keyword">status</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">On</span> branch <span class="keyword">master</span></span><br><span class="line">All conflicts <span class="keyword">fixed</span> but you <span class="keyword">are</span> still merging.</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git commit"</span> <span class="keyword">to</span> conclude <span class="keyword">merge</span>)</span><br><span class="line"></span><br><span class="line">Changes <span class="keyword">to</span> be committed:</span><br><span class="line"></span><br><span class="line">	modified:   play.js</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">include</span> <span class="keyword">in</span> what will be committed)</span><br><span class="line"></span><br><span class="line">	play.js.orig</span></span><br></pre></td></tr></table></figure>
+<p>Congrats you have resolved the merge conflict. We still have to commit our changes. Also notice a new (untracked) file was created. This is the same file when the merge conflict was first created, so you have both versions of the code. If multiple files conflict multiple .orig files will be generated. Delete this file and make the commit of the resolved merge.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm play<span class="class">.js</span><span class="class">.orig</span></span><br></pre></td></tr></table></figure>
+<p>I made a comment to play.js. Then I committed the changes</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">'merge the two branches'</span></span></span><br></pre></td></tr></table></figure>
+<p>Finally we can delete the develop branch and check that it is gone!</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-d develop </span><br><span class="line"><span class="label">Deleted</span> <span class="keyword">branch </span>develop (was fca53f8).</span><br><span class="line"></span><br><span class="line"><span class="label">git</span> <span class="keyword">branch</span><br><span class="line"></span>* master</span><br></pre></td></tr></table></figure>
+<p>Ultimately the develop commit shows up on the commit history of our master branch. There is another way to do this using <code>git rebase</code>. I’ll save that fun for later</p>
+<p>Check out the full git history here:</p>
+<p><a href="https://github.com/jasonshark/mergeConflicting/commits/master" target="_blank" rel="external">https://github.com/jasonshark/mergeConflicting/commits/master</a></p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Git/">Git</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/20/On-Insurrection/"  data-tooltip="On Insurrection">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/20/On-Insurrection/"  data-tooltip="On Insurrection">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/20/Handle-a-git-merge-conflict/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

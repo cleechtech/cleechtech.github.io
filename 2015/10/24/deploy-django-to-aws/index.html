@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>deploy django to aws - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="Following this tutorial.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="deploy django to aws">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="Following this tutorial.">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-11-26-12-AM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-11-32-00-AM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-11-35-51-AM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-11-38-50-AM.png">
+<meta property="og:image" content="http://media.giphy.com/media/vgxBQVRkJ5YBO/giphy.gif">
+<meta property="og:image" content="http://media.giphy.com/media/rjLBUukT0w1AA/giphy.gif">
+<meta property="og:image" content="http://media.giphy.com/media/X5nQfDQnaTSvu/giphy.gif">
+<meta property="og:image" content="http://media.giphy.com/media/2yU3Ex75PRjeE/giphy.gif">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-11-47-54-AM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-11-50-59-AM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/loading-1.gif">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-1-05-32-PM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-1-27-39-PM.png">
+<meta property="og:image" content="http://cleechtech.github.io/content/images/2015/06/Screen-Shot-2015-06-18-at-1-40-09-PM.png">
+<meta property="og:image" content="http://media.giphy.com/media/zemslkaIiA2oE/giphy.gif">
+<meta property="og:updated_time" content="2015-11-29T19:31:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="deploy django to aws">
+<meta name="twitter:description" content="Following this tutorial.">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            deploy django to aws
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Sat Oct 24 2015 17:50:16 GMT-0700">
+	
+		    Oct 24, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Following this <a href="https://realpython.com/blog/python/deploying-a-django-app-to-aws-elastic-beanstalk/" target="_blank" rel="external">tutorial</a>.</p>
+<a id="more"></a>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git clone <span class="keyword">https</span>://github.com/realpython/image-<span class="operator">of</span>-<span class="operator">the</span>-day.git</span><br><span class="line">$ cd image-<span class="operator">of</span>-<span class="operator">the</span>-day</span><br><span class="line">$ mkvirtualenv cptmusicblog</span><br><span class="line">$ pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>If the database is not running run:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>postgres -<span class="constant">D</span> /usr/local/var/postgres</span><br><span class="line"><span class="variable">$ </span>psql postgres</span><br><span class="line">postgres=<span class="comment"># create database cptmusicblog;</span></span><br><span class="line">postgres=<span class="comment"># \l</span></span><br></pre></td></tr></table></figure></p>
+<p>You should see a database named <code>cptmusicblog</code> in the output. <code>control + D</code> stops the postgres on Mac.</p>
+<p>Modify <code>iotd/iotd/settings.py</code> to your local database settings:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'RDS_DB_NAME'</span> <span class="keyword">in</span> <span class="built_in">os</span>.environ:</span><br><span class="line">    DATABASES = &#123;</span><br><span class="line">       <span class="string">'default'</span>: &#123;</span><br><span class="line">             <span class="string">'ENGINE'</span>:<span class="string">'django.db.backends.postgresql_psycopg2'</span>,</span><br><span class="line">             <span class="string">'NAME'</span>: <span class="built_in">os</span>.environ[<span class="string">'RDS_DB_NAME'</span>],</span><br><span class="line">             <span class="string">'USER'</span>: <span class="built_in">os</span>.environ[<span class="string">'RDS_USERNAME'</span>],</span><br><span class="line">             <span class="string">'PASSWORD'</span>: <span class="built_in">os</span>.environ[<span class="string">'RDS_PASSWORD'</span>],</span><br><span class="line">             <span class="string">'HOST'</span>: <span class="built_in">os</span>.environ[<span class="string">'RDS_HOSTNAME'</span>],</span><br><span class="line">             <span class="string">'PORT'</span>: <span class="built_in">os</span>.environ[<span class="string">'RDS_PORT'</span>],</span><br><span class="line">             &#125;</span><br><span class="line">          &#125;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    DATABASES = &#123;</span><br><span class="line">        <span class="string">'default'</span>: &#123;</span><br><span class="line">            <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</span><br><span class="line">            <span class="string">'NAME'</span>: <span class="string">'cptmusicblog'</span>,</span><br><span class="line">            <span class="string">'USER'</span>: <span class="string">''</span>,</span><br><span class="line">            <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</span><br><span class="line">            <span class="string">'HOST'</span> : <span class="string">'localhost'</span>,</span><br><span class="line">            <span class="string">'PORT'</span> : <span class="string">'5432'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Run some django commands to set up the database and create an admin user. The credentials you choose will allow you to log in to the admin section of the site.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python manage<span class="class">.py</span> migrate</span><br><span class="line">$ python manage<span class="class">.py</span> createsuperuser</span><br><span class="line">$ python manage<span class="class">.py</span> runserver</span><br></pre></td></tr></table></figure>
+<p>Go to <code>http://localhost:8000/admin/</code> and log in with credentials. If you go to the root (<code>http://localhost:8000/</code>) you will see a django error. Now go add an image in the admin section under “Featured images”. Once you upload you’ll see your image on the homepage <code>/</code>.</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-11-26-12-AM.png" alt=""></p>
+<h3 id="CLI_for_AWS_Elastic_Beanstalk">CLI for AWS Elastic Beanstalk</h3><p>Install this to your virtualenv:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>pip install awsebcli</span><br><span class="line"><span class="variable">$ </span>eb --version</span><br></pre></td></tr></table></figure>
+<p>Then sign in to <a href="http://aws.amazon.com/" target="_blank" rel="external">AWS</a>:</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-11-32-00-AM.png" alt=""></p>
+<p>Okay then set up an elastic beanstalk environment:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>eb init</span><br></pre></td></tr></table></figure>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-11-35-51-AM.png" alt=""></p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-11-38-50-AM.png" alt=""></p>
+<p>I created a new ssh key for this named aws-eb. Once that command is done there is now a <code>.elasticbeanstalk</code> directory in your project.</p>
+<p>Run <code>$ eb console</code> and your browser will open up</p>
+<h3 id="Gif_break">Gif break</h3><p>This is us right now:</p>
+<p><img src="http://media.giphy.com/media/vgxBQVRkJ5YBO/giphy.gif" alt=""></p>
+<p>This is where we want to be: </p>
+<p><img src="http://media.giphy.com/media/rjLBUukT0w1AA/giphy.gif" alt=""></p>
+<p>This is going to happen first:</p>
+<p><img src="http://media.giphy.com/media/X5nQfDQnaTSvu/giphy.gif" alt=""></p>
+<p>Don’t do this:</p>
+<p><img src="http://media.giphy.com/media/2yU3Ex75PRjeE/giphy.gif" alt=""></p>
+<h3 id="Configure_environment">Configure environment</h3><p>We want to have a development and production environment.</p>
+<p>Run <code>$ eb create</code></p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-11-47-54-AM.png" alt=""></p>
+<p>So that looks good. We want to host our static files in an S3 bucket.</p>
+<p>Elastic beanstalk created an environment and tried to deploy our app…</p>
+<p>In the console (<code>eb console</code>) you can view the environment:</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-11-50-59-AM.png" alt=""></p>
+<p>Now create a database in the AWS console:</p>
+<ol>
+<li>Click the “Configuration” link.</li>
+<li>Scroll all the way to the bottom of the page, and then under the “Data Tier” section, click the link “create a new RDS database”.</li>
+<li>On the RDS setup page change the “DB Engine” to “postgres”.</li>
+<li>Add a “Master Username” and “Master Password”.</li>
+<li>Save the changes</li>
+</ol>
+<p>I saw this for a while:</p>
+<p><img src="/content/images/2015/06/loading-1.gif" alt=""></p>
+<p>Create <code>.ebextensions/01_packages.config</code>:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">packages</span>:</span><br><span class="line">  <span class="attribute">yum</span>:</span><br><span class="line">    <span class="attribute">git</span>: []</span><br><span class="line">    <span class="attribute">postgresql93-devel</span>: []</span><br></pre></td></tr></table></figure>
+<h3 id="Fix_mistrake">Fix mistrake</h3><p>Actually <code>.elasticbeanstalk</code> goes in the root of the directory, so we have to move it, so from the <code>iotd</code> directory (where it is and not supposed to be).</p>
+<p>Move the file:<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>mv .elasticbeanstalk ..   </span><br><span class="line"><span class="variable">$ </span>cd ..</span><br><span class="line"><span class="variable">$ </span>eb list</span><br><span class="line"><span class="variable">$ </span>eb config cptmusicblog-dev</span><br></pre></td></tr></table></figure></p>
+<h3 id="change_WSGIPath_config">change WSGIPath config</h3><p>This pulls down a config file from AWS. After we edit the config the app will redeploy. We have to edit this part of the file:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">aws:</span><span class="string">elasticbeanstalk:</span><span class="string">container:</span><span class="string">python:</span></span><br><span class="line"><span class="label">  NumProcesses:</span> <span class="string">'1'</span></span><br><span class="line"><span class="label">  NumThreads:</span> <span class="string">'15'</span></span><br><span class="line"><span class="label">  StaticFiles:</span> <span class="regexp">/static/</span>=<span class="keyword">static</span>/</span><br><span class="line"><span class="label">  WSGIPath:</span> application.py</span><br></pre></td></tr></table></figure>
+<p>Change the last line so that it reads:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">aws:</span><span class="string">elasticbeanstalk:</span><span class="string">container:</span><span class="string">python:</span></span><br><span class="line"><span class="label">  NumProcesses:</span> <span class="string">'1'</span></span><br><span class="line"><span class="label">  NumThreads:</span> <span class="string">'15'</span></span><br><span class="line"><span class="label">  StaticFiles:</span> <span class="regexp">/static/</span>=<span class="keyword">static</span>/</span><br><span class="line"><span class="label">  WSGIPath:</span> iotd<span class="regexp">/iotd/</span>wsgi.py</span><br></pre></td></tr></table></figure>
+<p>Then run <code>$ eb deploy</code> after you save and exit the changes.</p>
+<p>You can now go to the website (<a href="http://cptmusicblog-dev.elasticbeanstalk.com/" target="_blank" rel="external">http://cptmusicblog-dev.elasticbeanstalk.com/</a> in my case) and see a nice friendly django error:</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-1-05-32-PM.png" alt=""></p>
+<p>This is good! We got the same thing when running locally before we uploaded the doge image. Go to <code>&lt;your_eb_url&gt;/admin</code> (so in my case <code>http://cptmusicblog-dev.elasticbeanstalk.com/admin</code>) and you will see the django admin login panel. Hooray!!</p>
+<h3 id="Logging_in_to_the_admin">Logging in to the admin</h3><p>In <code>.elasticbeanstalk/02_python.config</code> we specify settings for AWS:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">container_commands</span>:</span><br><span class="line">    <span class="number">01</span><span class="attribute">_migrate</span>:</span><br><span class="line">	    <span class="attribute">command</span>: <span class="string">"source /opt/python/run/venv/bin/activate &amp;&amp; python iotd/manage.py migrate --noinput"</span></span><br><span class="line">	    <span class="attribute">leader_only</span>: true</span><br><span class="line">    <span class="number">02</span><span class="attribute">_createsu</span>:</span><br><span class="line">	  <span class="attribute">command</span>: <span class="string">"source /opt/python/run/venv/bin/activate &amp;&amp; python iotd/manage.py createsu"</span></span><br><span class="line">	  <span class="attribute">leader_only</span>: true</span><br><span class="line">    <span class="number">03</span><span class="attribute">_collectstatic</span>:</span><br><span class="line">	  <span class="attribute">command</span>: <span class="string">"source /opt/python/run/venv/bin/activate &amp;&amp; python iotd/manage.py collectstatic --noinput"</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">option_settings</span>:</span><br><span class="line">    <span class="string">"aws:elasticbeanstalk:application:environment"</span>:</span><br><span class="line">        <span class="attribute">DJANGO_SETTINGS_MODULE</span>: <span class="string">"iotd.settings"</span></span><br><span class="line">        <span class="string">"PYTHONPATH"</span>: <span class="string">"/opt/python/current/app/iotd:$PYTHONPATH"</span></span><br><span class="line">        <span class="string">"ALLOWED_HOSTS"</span>: <span class="string">".elasticbeanstalk.com"</span></span><br><span class="line">    <span class="string">"aws:elasticbeanstalk:container:python"</span>:</span><br><span class="line">        <span class="attribute">WSGIPath</span>: iotd/iotd/wsgi.py</span><br><span class="line">        <span class="attribute">NumProcesses</span>: <span class="number">3</span></span><br><span class="line">        <span class="attribute">NumThreads</span>: <span class="number">20</span></span><br><span class="line">    <span class="string">"aws:elasticbeanstalk:container:python:staticfiles"</span>:</span><br><span class="line">        <span class="string">"/static/"</span>: <span class="string">"www/static/"</span></span><br></pre></td></tr></table></figure>
+<p>Notice the second step creates a superuser. The directory we cloned has a script in <code>iotd/images/management/commands/createsu.py</code>:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">from django<span class="class">.core</span><span class="class">.management</span><span class="class">.base</span> import BaseCommand</span><br><span class="line">from django<span class="class">.contrib</span><span class="class">.auth</span><span class="class">.models</span> import User</span><br><span class="line"></span><br><span class="line">class <span class="function"><span class="title">Command</span><span class="params">(BaseCommand)</span></span>:</span><br><span class="line"></span><br><span class="line">    def <span class="function"><span class="title">handle</span><span class="params">(self, *args, **options)</span></span>:</span><br><span class="line">        <span class="keyword">if</span> not User<span class="class">.objects</span><span class="class">.filter</span>(username=<span class="string">"admin"</span>).<span class="function"><span class="title">exists</span><span class="params">()</span></span>:</span><br><span class="line">            User<span class="class">.objects</span><span class="class">.create_superuser</span>(<span class="string">"admin"</span>, <span class="string">"admin@admin.com"</span>, <span class="string">"admin"</span>)</span><br></pre></td></tr></table></figure>
+<p>So when you go to <code>/admin</code> log in with <code>username: admin, password: admin</code>. Then you can upload an image and you will see doge again!</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-1-27-39-PM.png" alt=""></p>
+<h3 id="Changing_where_the_images_are_hosted">Changing where the images are hosted</h3><p>So we are almost good. The problem now is that the images are hosted on the EC2 instance itself in the static files directory. We don’t want that. Every time we run <code>eb deploy</code> we will create a brand new instance with a clean static files directory. We don’t want to wipe our data every single time we deploy. </p>
+<p>Instead we will to host our data in an <a href="http://aws.amazon.com/s3/" target="_blank" rel="external">S3 bucket</a>. The instances will talk to the bucket and render the data. That way we can deploy all day long and not erase the data we’ve uploded.</p>
+<p>Try it! Run <code>eb deploy</code> and the image will disappear:</p>
+<p><img src="/content/images/2015/06/Screen-Shot-2015-06-18-at-1-40-09-PM.png" alt=""></p>
+<p>The text will be stored in the database we set up but the static_files will be wiped.</p>
+<h3 id="Gif_break_#2">Gif break #2</h3><p>This is us if we host our images on EC2 instances instead of S3 buckets:</p>
+<p><img src="http://media.giphy.com/media/zemslkaIiA2oE/giphy.gif" alt=""></p>
+<p>I will continue on how to set up and configure S3 bucket for our app in part 2:</p>
+<p><a href="http://connorleech.ghost.io/deploy-django-to-aws-part-2-hosting-files-on-s3/" target="_blank" rel="external">deploy django to aws part 2: hosting files on S3</a></p>
+<p>If you don’t need file upload and only a server and a database you are good to go. Otherwise see you “after the jump”.</p>
+
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/AWS/">AWS</a> <a class="tag tag--primary tag--small t-link" href="/tags/Django/">Django</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/Intro-to-React/"  data-tooltip="Intro to React">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/deploy-django-to-aws-part-2-hosting-files-on-S3/" data-tooltip="deploy django to aws part 2- hosting files on S3">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/Intro-to-React/"  data-tooltip="Intro to React">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/deploy-django-to-aws-part-2-hosting-files-on-S3/" data-tooltip="deploy django to aws part 2- hosting files on S3">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/24/deploy-django-to-aws/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>

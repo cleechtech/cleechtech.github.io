@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="El Blogo de Connor">
+    <title>Intro to React - El Blogo de Connor</title>
+    <meta name="author" content="Connor Leech">
+    
+    
+    <meta name="description" content="Oh hurrow React.js">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Intro to React">
+<meta property="og:url" content="http://cleechtech.github.io/2015/10/24/Intro-to-React/index.html">
+<meta property="og:site_name" content="El Blogo de Connor">
+<meta property="og:description" content="Oh hurrow React.js">
+<meta property="og:image" content="http://static.comicvine.com/uploads/original/12/127594/4621261-6047962655-u-mEl.gif">
+<meta property="og:image" content="http://media.giphy.com/media/eaJyDondNeLHq/giphy.gif">
+<meta property="og:updated_time" content="2015-11-29T19:32:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intro to React">
+<meta name="twitter:description" content="Oh hurrow React.js">
+<meta name="twitter:creator" content="@realjasonshark">
+    
+        <meta rel="publisher" content="https://plus.google.com/+ConnorLeech"/>
+    
+    
+    
+        <meta property="og:image" content="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css" type="text/css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-70809574-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">El Blogo de Connor</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/#about">
+        
+        
+            <img class="header-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">Connor Leech</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/#about"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/cleechtech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2031033/connor-leech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/realjasonshark" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.linkedin.com/in/connorleech" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+                    <span class="sidebar-button-desc">LinkedIn</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:connorleech@gmail.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Intro to React
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Sat Oct 24 2015 17:57:57 GMT-0700">
+	
+		    Oct 24, 2015
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Oh hurrow React.js<br><a id="more"></a></p>
+<p><a href="https://github.com/jasonshark/intro-to-react" target="_blank" rel="external">SOURCE CODE</a></p>
+<iframe src="https://ghbtns.com/github-btn.html?user=jasonshark&repo=intro-to-react&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+
+<iframe src="https://ghbtns.com/github-btn.html?user=jasonshark&repo=intro-to-react&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+
+<p>In this tutorial we’re going to go through the basics of React. We will render a list of posts that we return via a ajax query. This will not be fully functional as I’m also a beginner to react. I’ll cover what I know.</p>
+<h4 id="First_off,_why_react?">First off, why react?</h4><p>React exists to update apps and websites in response  to constant changes in data. React is only the view layer. So if you want to make an http call or model data you need other tools. For our trivial example jQuery is sufficient. To use react for all the capabilities of angular.js you need other tools. Facebook advises to use the Flux pattern. This is not a library but instead an idea. I found that incredibly unhelpful. I think it is best to not take flux to seriously. If you start coding consistently in react best practices will become apparent. Right now many things are being forged out. Angular has a head start as far as best practices are concerned, but that could all go out the window when Angular 2.0 comes out. This will be a gentle introduction to what this whole react thing <em>is</em>.</p>
+<p>React is only the view. Think of it as a substitute for html, but more complicated and made out of javascript. It is common to see react used with Buildpack or browserify, using npm modules on the client side. It is also common to see react written on the server side. React is good because it keeps javascript and html coupled tightly together. JSX is a syntax that makes it possible to write html in javascript code. React compiles JSX into HTML and keeps track of updates through a virtual DOM.</p>
+<h6 id="The_Virtual_DOM">The Virtual DOM</h6><p>React is so fast because it never talks to the DOM directly. React maintains a fast in-memory representation of the DOM. <code>render</code> methods return a description of the DOM, and React can diff this description with the in-memory representation to compute the fastest way to update the browser.</p>
+<h4 id="back_to_basics">back to basics</h4><p>All you need is html and a javascript file. Set up an <strong>index.html</strong>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- scripts --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/jsx;harmony=true"</span> <span class="attribute">src</span>=<span class="value">"js/app.jsx"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>For this we include react.js, the JSXTransformer, jQuery and a div where our entire application will render. The JSXTransformer library converts JSX to raw javascript. You can write react out of normal, ES5 javascript but it is more work. JSX will make our lives with React easier. The whole point of react is to couple our html and javascript tightly. It makes sense to use the transformer. You can use <a href="http://es6katas.org/?utm_source=javascriptweekly&amp;utm_medium=email" target="_blank" rel="external">ES6 features</a> like <a href="http://connorleech.ghost.io/es6-features/" target="_blank" rel="external">arrow functions</a> with React and JSX. </p>
+<p>Then in <strong>js/app.jsx</strong> we’ll render content to the screen.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.render(<span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello React<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>, document.getElementById('content'));</span><br></pre></td></tr></table></figure></p>
+<p>This is a common pattern, but instead of rendering html to the screen like this, most apps will render a component.</p>
+<h6 id="First_component">First component</h6><p>Everything you build in React will be a component. React is more simple than angular because it does less. Everything in react is a component. React is only the view.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App = React.createClass(&#123;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1&gt;Hello, world!&lt;/h1&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">React.render(&lt;App /&gt;, document.getElementById(<span class="string">'content'</span>));</span><br></pre></td></tr></table></figure>
+<p>Think of components as simple functions that take in “props” and “state” and render HTML. The component can only return one html node, in this case that’s an <code>&lt;h1&gt;</code>. JSX is similar to normal HTML but not the same.</p>
+<h4 id="Hello_props">Hello props</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App = React.createClass(&#123;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1&gt;Hello &#123;<span class="keyword">this</span>.props.title&#125;!&lt;/h1&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">React.render(&lt;App title=<span class="string">'Title Property'</span> /&gt;, document.getElementById(<span class="string">'content'</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="Hello_states,_what_up_AJAX">Hello states, what up AJAX</h4><p>React thinks of UIs as simple state machines. By thinking of a UI as being in various states and rendering those states, it’s easy to keep your UI consistent.</p>
+<p><img src="http://static.comicvine.com/uploads/original/12/127594/4621261-6047962655-u-mEl.gif" alt="what up Iliad"></p>
+<p>In React, you simply update a component’s state, and then render a new UI based on this new state. React takes care of updating the DOM for you in the most efficient way.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App = React.createClass(&#123;</span><br><span class="line"></span><br><span class="line">	getInitialState: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			posts: []</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;,</span><br><span class="line">	componentWillMount: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">		$.<span class="keyword">get</span>(<span class="string">'/api/posts'</span>, <span class="function"><span class="keyword">function</span><span class="params">(posts)</span></span>&#123;</span><br><span class="line">			self.setState(&#123;posts: posts&#125;)</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;,</span><br><span class="line">	render: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;h1&gt;All Posts&lt;/h1&gt;</span><br><span class="line">				&lt;List posts=&#123;<span class="keyword">this</span>.state.posts&#125;/&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> List = React.createClass(&#123;</span><br><span class="line">	render: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;ul&gt;</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">this</span>.props.posts.map(<span class="function"><span class="keyword">function</span><span class="params">(post)</span></span>&#123;</span><br><span class="line">						<span class="keyword">return</span> &lt;li key=&#123;post.id&#125;&gt;&#123;post.title&#125;&lt;/li&gt;</span><br><span class="line">					&#125;)</span><br><span class="line">				&#125;</span><br><span class="line">			&lt;/ul&gt;</span><br><span class="line">		);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">React.render(&lt;App /&gt;, document.getElementById(<span class="string">'content'</span>));</span><br></pre></td></tr></table></figure>
+<p>This Here we call to get “posts” from a backend and render a list to the page. The key is necessary for react when rendering a list of elements. We use jQuery here for its ajax functionality. In React, an owner is the component that sets the props of other components. So through the owner component <code>&lt;App /&gt;</code> we set the state and pass that as a property to the List function. In React, data flows from owner to owned component through props. is the magic of JSX with React.</p>
+<p><img src="http://media.giphy.com/media/eaJyDondNeLHq/giphy.gif" alt=""></p>
+<h4 id="More_on_state">More on state</h4><p><code>setState(data, callback)</code> informs React of data change. This method merges data into <code>this.state</code> and re-renders the component. When the component finishes re-rendering, the optional callback is called. Most of the time you’ll never need to provide a callback since React will take care of keeping your UI up-to-date for you. More magic in the <a href="https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html" target="_blank" rel="external">docs</a>.</p>
+<h4 id="Component_Lifecycle">Component Lifecycle</h4><p>Components have a <a href="https://facebook.github.io/react/docs/component-specs.html" target="_blank" rel="external">lifecycle</a> for when they are being added, changed or removed from the DOM. For each stage of the lifecycle we can call a function. Here are some prominent lifecycle states:</p>
+<p><strong>Mounting</strong>: <code>componentWillMount</code> Invoked once before being added to the DOM</p>
+<p><strong>Updating</strong>: <code>componentDidMount</code> Invoked once when component is added to the DOM. Ajax requests and interactions with other libraries go in this method.</p>
+<p><strong>Unmounting</strong>: <code>componentWillUnmount</code> Invoked before a component is removed from the DOM.</p>
+<h4 id="Resources">Resources</h4><p>Facebook’s <a href="https://facebook.github.io/react/docs/why-react.html" target="_blank" rel="external">React Getting Started Guide</a></p>
+<p><a href="https://www.eventedmind.com/" target="_blank" rel="external">Eventedmind</a> is good, costs money.</p>
+<h4 id="Conclusion">Conclusion</h4><p>In React I like how the html and javascript are closely coupled. I think the simplicity of only dealing with props and state is also cool. In a way it is nice to have limited functionality with React, that way I can use whatever other libraries I want. With coding React I also feel I’m getting better at using javascript, npm modules and new ES6. What I learn with React does not feel React specific.</p>
+<p>On the other hand, React has a steep learning curve and does not provide all the functionality I want. I am not familiar with Backbone and implementing thing the “Flux way” might be another headache. Routing is another concern. Maybe in the future I will look into something like <a href="https://github.com/rackt/react-router" target="_blank" rel="external">react-router</a>. I am excited for the React ecosystem to mature and for the Angular 2.0 release to implement features pioneered by React. Everyone can win!</p>
+<p>To dig in more, check the <a href="https://github.com/jasonshark/intro-to-react" target="_blank" rel="external">SOURCE CODE</a>. (Pull requests are welcome)</p>
+<iframe src="https://ghbtns.com/github-btn.html?user=jasonshark&repo=intro-to-react&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+
+<iframe src="https://ghbtns.com/github-btn.html?user=jasonshark&repo=intro-to-react&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+            
+                
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Javascript/">Javascript</a> <a class="tag tag--primary tag--small t-link" href="/tags/React/">React</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/Set-up-drf-to-play-well-with-angular-templates/"  data-tooltip="Set up drf to play well with angular templates">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/deploy-django-to-aws/" data-tooltip="deploy django to aws">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2015 Connor Leech. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/Set-up-drf-to-play-well-with-angular-templates/"  data-tooltip="Set up drf to play well with angular templates">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/10/24/deploy-django-to-aws/" data-tooltip="deploy django to aws">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://cleechtech.github.io/2015/10/24/Intro-to-React/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        <!-- Define author's picture -->
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://www.gravatar.com/avatar/88ce5a1f961832585f329292d22451fc?s=110"/>
+        
+            <h4 id="about-card-name">Connor Leech</h4>
+        
+            <h5 id="about-card-bio"><p>Javascript developer in the Bay Area</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Proteus Digital Health</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Oakland, CA
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/jquery.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/assets/js/tranquilpeak.js" type="text/javascript"></script>
+<!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cleechtech';
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+
+</html>
